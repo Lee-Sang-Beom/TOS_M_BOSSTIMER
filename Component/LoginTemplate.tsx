@@ -33,7 +33,7 @@ export default function LoginTemplate() {
         } else if (code === "auth/wrong-password") {
             return "비밀번호 오류! 비밀번호가 올바르지 않습니다.";
         } else if (code === "auth/user-not-found") {
-            return "등록되지 않은 사용자입니다. 로그인 버튼 옆의 회원가입 버튼을 눌러 입력 폼을 전환해주세요.";
+            return "등록되지 않은 사용자입니다. 아래 회원가입 버튼을 눌러 입력 창을 전환해주세요.";
         } else {
             return "알 수 없는 오류입니다. 관리자에게 문의하세요.";
         }
