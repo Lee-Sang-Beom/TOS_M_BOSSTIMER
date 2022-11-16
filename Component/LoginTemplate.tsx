@@ -4,8 +4,9 @@ import { createUserWithEmailAndPassword, fetchSignInMethodsForEmail, signInWithE
 import { doc, setDoc } from "firebase/firestore";
 import { dbService as db } from "../firebaseConfig";
 import { Form, Label } from "semantic-ui-react";
-
 import LoginForm from "./LoginForm";
+import { useRecoilState } from "recoil";
+import { userLoginMonitoringAtom } from "../src";
 
 export default function LoginTemplate() {
 
@@ -19,7 +20,6 @@ export default function LoginTemplate() {
 
     // 회원가입 | 로그인 선택 상태 관리
     const [newAccount, setNewAccount] = useState(false);
-
 
     // error를 사용자가 보고 이해할 수 있게 변환하여 출력
     function getErrorText(error: any): string {

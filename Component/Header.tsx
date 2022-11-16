@@ -4,24 +4,38 @@ import Navigation from "./Nav"
 import Image from "next/image"
 import logo from "../public/img/tosmLogo.jpg"
 import Link from "next/link"
+import { useEffect, useState } from "react"
+import { authService as auth } from "../firebaseConfig"
 
 export default function Header() {
+    const [isSignedIn, setIsSignedIn] = useState(false);
 
-    // 로그인 상태를 검사하기 위함 : 로그인되지 않은 상태(false)면 header를 출력하지 않음
-    const [userLogin, setUserLogin] = useRecoilState(userLoginMonitoringAtom);
-    
+    useEffect(() => {
+        auth.onAuthStateChanged((user) => {
+            if (user) {
+                setIsSignedIn(true);
+            } else {
+                setIsSignedIn(false);
+            }
+        });
+    }, []);
+
     return (
         <>
-            {userLogin && 
-            <header className="text-gray-600 body-font ">
-                <div className="mx-auto flex flex-wrap py-6 flex-col md:flex-row items-center">
-                    <Link href ="/home" className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0 cursor-pointer">
-                        <Image src={logo} width={100} height={100} alt="logo"/>
-                    </Link>
-                    <Navigation />
-                </div>
-            </header>}
-
+            {isSignedIn &&
+                <>
+                    <header className="text-gray-600 body-font ">
+                        <div className="mx-auto flex flex-wrap py-6 flex-col md:flex-row items-center">
+                            <Link href="/home" className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0 cursor-pointer">
+                                <Image src={logo} width={100} height={100} alt="logo" />
+                            </Link>
+                            <Navigation />
+                        </div>
+                    </header>
+                </>
+            }
         </>
+
+
     )
 }
