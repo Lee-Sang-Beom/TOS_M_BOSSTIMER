@@ -1,9 +1,8 @@
-import Image from "next/image";
-import LoginTemplate from "./LoginTemplate";
-import test from "../public/img/test.jpg";
+import Image from "next/image"
+import LoginTemplate from "./LoginTemplate"
+import test from "../public/img/test.jpg"
 
 export default function Sign() {
-
     return (
         <div>
             <section className="text-gray-600 body-font">
