@@ -1,4 +1,5 @@
 import Image from "next/image"
+import Link from "next/link"
 import ep01 from "../public/img/ep01.jpg"
 import ep02 from "../public/img/ep02.jpg"
 import ep03 from "../public/img/ep03.jpg"
@@ -10,13 +11,15 @@ import ep08 from "../public/img/ep08.jpg"
 
 export default function EpisodeSection() {
 
-    const EpisodeComponent = (epnum: any, num:number) => {
+    const EpisodeComponent = (epnum: any, num: number) => {
         return (
-            <div className="lg:w-1/4 md:w-1/2 p-4 w-full flex flex-col justify-center items-center">
-                <Image src={epnum} width={420} height={260} className="object-cover object-center block" alt="ecommerce" />
-                <div className="mt-4">
-                    <h3 className="text-gray-500 text-sm tracking-widest title-font mb-1">{`에피소드 ${num}`}</h3>
-                </div>
+            <div className="lg:w-1/4 md:w-1/2 p-4 w-full">
+                <Link className="flex flex-col justify-center items-center" href={`/episode/episode${num}`}>
+                    <Image src={epnum} width={420} height={260} className="object-cover object-center block" alt="ecommerce" />
+                    <div className="mt-4">
+                        <h3 className="text-gray-500 text-sm tracking-widest title-font mb-1">{`에피소드 ${num}`}</h3>
+                    </div>
+                </Link>
             </div>
         )
     }

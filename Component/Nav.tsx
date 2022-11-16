@@ -30,11 +30,14 @@ export default function Navigation() {
 
     return (
         <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
-            <Menu inverted pointing>
+            <Menu pointing secondary> 
                 <Menu.Item className="hover:text-gray-900" name="home" active={activeItem === 'home'} onClick={goLink} />
                 <Menu.Item className="hover:text-gray-900" name="admin" active={activeItem === 'admin'} onClick={goLink} />
                 <Menu.Item className="hover:text-gray-900" name="help" active={activeItem === 'help'} onClick={goLink} />
-                <Menu.Item className="hover:text-gray-900" name="로그아웃" onClick={onLogOutClick} />
+                <Menu.Item />
+                <Menu.Menu position="right">
+                    <Menu.Item className="hover:text-gray-900" name="로그아웃" onClick={onLogOutClick} />
+                </Menu.Menu>
             </Menu>
         </nav>
     );
