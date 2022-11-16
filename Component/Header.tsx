@@ -13,8 +13,8 @@ export default function Header() {
     return (
         <>
             {userLogin && 
-            <header className="text-gray-600 body-font py-2">
-                <div className="mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+            <header className="text-gray-600 body-font ">
+                <div className="mx-auto flex flex-wrap py-6 flex-col md:flex-row items-center">
                     <Link href ="/home" className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0 cursor-pointer">
                         <Image src={logo} width={100} height={100} alt="logo"/>
                     </Link>
