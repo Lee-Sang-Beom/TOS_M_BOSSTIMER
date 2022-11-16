@@ -8,13 +8,14 @@ import Footer from '../Component/Footer'
 export default function App({ Component, pageProps }: AppProps) {
 
   return (
-    <div className="container">
-      <RecoilRoot>
-        <Reset />
+
+    <RecoilRoot>
+      <Reset />
+      <div className="container">
         <Header />
         <Component {...pageProps} />
         <Footer />
-      </RecoilRoot>
-    </div>
+      </div>
+    </RecoilRoot>
   )
 }

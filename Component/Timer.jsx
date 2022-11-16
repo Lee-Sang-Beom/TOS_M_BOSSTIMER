@@ -41,6 +41,8 @@ const Timer = (props) => {
     setMin(padNumber(tempMin, 2));
     setSec(padNumber(tempSec, 2));
     initialTime.current = tempHour * 60 * 60 + tempMin * 60 + tempSec;
+
+    // console.log(Number(hour), Number(min), Number(sec))
   };
 
   return (
@@ -48,7 +50,7 @@ const Timer = (props) => {
       <p className="text-sm text-red-500">
         {hour} : {min} : {sec}
       </p>
-      <button onClick={resetTimer}> 초기화 </button>
+      <button className="animate-pulse rounded hover:rounded-lg text-xs bg-slate-800 text-white p-2 mt-2" onClick={resetTimer}>초기화</button>
     </>
   );
 };
