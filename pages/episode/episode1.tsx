@@ -1,5 +1,6 @@
+import { Component, useEffect, useRef, useState } from "react"
 import { Divider, Segment } from "semantic-ui-react"
-
+import Timer from "./Timer.jsx"
 interface Props {
     areaName: string
     bossName: string
@@ -8,20 +9,24 @@ interface Props {
 
 export default function Ep01() {
 
-    const EpContent = ({areaName, bossName, time} : Props) => {
+    const [currentTime_01, setCurrentTime_01] = useState("");
+    const [currentTime_02, setCurrentTime_02] = useState("");
+    const [serverTime, setServerTime] = useState(0);
+    const nextTime = useRef(0);
+
+
+    const EpContent = ({ areaName, bossName, time }: Props) => {
         return (
-            <>
-                <div className="p-2 lg:w-1/3 md:w-1/2 w-full">
-                    <div className="h-full flex items-center border-gray-200 border p-4 rounded-lg">
-                        <div className="flex-grow">
-                            <h2 className="text-gray-900 mb-1 text-lg font-semibold">{`- ${areaName} -`}</h2>
-                            <p className="text-gray-900 mb-4 text-base">{`${bossName}`}</p>
-                            <p className="text-red-500 font-bold">{`${time}`}</p>
-                        </div>
+
+            <div className="p-2 lg:w-1/3 md:w-1/2 w-full">
+                <div className="h-full flex items-center border-gray-200 border p-4 rounded-lg">
+                    <div className="flex-grow">
+                        <h2 className="text-gray-900 mb-1 text-lg font-semibold">{`- ${areaName} -`}</h2>
+                        <p className="text-gray-900 mb-4 text-base">{`${bossName}`}</p>
+                        <Timer hour={time} min={0} sec={0}/>
                     </div>
                 </div>
-
-            </>
+            </div>
         )
     }
 
@@ -34,9 +39,11 @@ export default function Ep01() {
                 </div>
                 <Segment>
                     <div className="flex flex-wrap -m-2">
-                        <EpContent areaName={`샤울레이 광장 마을`} bossName={`비겁한 붉은 부베 투사`} time={`none`} />
-                        <EpContent areaName={`수정 광산`} bossName={`비겁한 붉은 부베 투사`} time={`none`} />
+                        <EpContent areaName={`샤울레이 광장 마을`} bossName={`비겁한 붉은 부베 투사`} time={currentTime_01}/>
+                        
                         <Divider vertical>💬</Divider>
+                        <EpContent areaName={`수정 광산`} bossName={`비겁한 붉은 부베 투사`} time={currentTime_02} />
+                        
                     </div>
                 </Segment>
             </div>
