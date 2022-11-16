@@ -1,12 +1,13 @@
 import { Dispatch, SetStateAction } from "react";
 import { Form, Label, Input, Button } from "semantic-ui-react";
+import 'semantic-ui-css/semantic.min.css';
 
 interface Props {
     email: string
     setEmail: Dispatch<SetStateAction<string>>
     password: string
     setPassWord: Dispatch<SetStateAction<string>>
-  }
+}
 
 export default function LoginForm({email, setEmail, password, setPassWord}: Props) {
 
@@ -14,7 +15,7 @@ export default function LoginForm({email, setEmail, password, setPassWord}: Prop
         <>
             <Form.Field>
                 <div className="relative mb-4">
-                    <Label className="leading-7 text-sm text-gray-600">Email</Label>
+                    <label className="leading-7 text-sm text-gray-600">Email</label>
                     <input
                         type="email"
                         value={email}
@@ -24,7 +25,7 @@ export default function LoginForm({email, setEmail, password, setPassWord}: Prop
             </Form.Field>
             <Form.Field>
                 <div className="relative mb-4">
-                    <Label className="leading-7 text-sm text-gray-600">Password</Label>
+                    <label className="leading-7 text-sm text-gray-600">Password</label>
                     <input
                         type="password"
                         value={password}

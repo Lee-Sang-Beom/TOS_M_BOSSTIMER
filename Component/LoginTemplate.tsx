@@ -1,10 +1,10 @@
 import { authService as auth } from "../firebaseConfig";
-import { useRouter } from 'next/router';
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { createUserWithEmailAndPassword, fetchSignInMethodsForEmail, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
 import { dbService as db } from "../firebaseConfig";
-import { Form, Label, Input, Button } from "semantic-ui-react";
+import { Form, Label } from "semantic-ui-react";
+
 import LoginForm from "./LoginForm";
 
 export default function LoginTemplate() {
@@ -48,7 +48,7 @@ export default function LoginTemplate() {
         try {
             if (newAccount) {
                 // create Account
-                const data = await createUserWithEmailAndPassword(auth, email, password)
+                await createUserWithEmailAndPassword(auth, email, password)
                     .then(({ user }) => {
                         setDoc(
                             doc(db, "userInfo", user.uid),
@@ -59,7 +59,7 @@ export default function LoginTemplate() {
             }
             else {
                 // login
-                const data = await signInWithEmailAndPassword(auth, email, password);
+                await signInWithEmailAndPassword(auth, email, password);
             }
         } catch (error: any) {
             // exception handling
@@ -80,12 +80,16 @@ export default function LoginTemplate() {
         <div className="lg:w-3/6 md:w-1/2 bg-gray-100 rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0">
             <h2 className="text-gray-900 text-lg font-medium title-font mb-5">{!newAccount ? `로그인` : `회원가입`}</h2>
             <Form onSubmit={onSubmit}>
+
+                {/* E-mail, PW 입력 Form */}
                 <LoginForm email={email} setEmail={setEmail} password={password} setPassWord={setPassWord} />
+
+                {/* 회원가입 시, 닉네임을 입력하는 Form */}
                 {newAccount &&
                     <>
                         <Form.Field>
                             <div className="relative mb-4">
-                                <Label className="leading-7 text-sm text-gray-600">닉네임</Label>
+                                <label className="leading-7 text-sm text-gray-600">닉네임</label>
                                 <input
                                     type="text"
                                     required
@@ -95,12 +99,14 @@ export default function LoginTemplate() {
                             </div>
                         </Form.Field>
                     </>}
+
                 <div className="flex items-center">
                     <button className="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">{!newAccount ? `로그인` : `회원가입`}</button>
                 </div>
                 {error && <p className="mt-4 text-sm text-red-500">{error}</p>}
             </Form>
 
+            {/* 로그인 / 회원가입 상황 전환 */}
             <div>
                 {!newAccount ?
                     <button className="text-sm w-full mt-4 createAccount_btn bg-slate-600 text-white" onClick={changeForm}>

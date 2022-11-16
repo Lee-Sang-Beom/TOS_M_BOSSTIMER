@@ -1,4 +1,3 @@
-import { useRouter } from 'next/router';
 import { useEffect, useState } from "react";
 import EpisodeSection from "../Component/episodeSection";
 import { userLoginMonitoringAtom } from "../src/index"
@@ -18,22 +17,9 @@ export default function Home() {
     });
   }, []);
 
-  const router = useRouter();
-
-  const onLogOutClick = () => {
-    auth.signOut();
-    router.replace("/");
-  };
-
   return (
     <div>
       <EpisodeSection/>
-      <button
-        className="text-sm w-1/3 mt-4 createAccount_btn bg-slate-600 text-white"
-        onClick={onLogOutClick}>
-        {`로그아웃하기`}
-      </button>
-
     </div>
 
   )
