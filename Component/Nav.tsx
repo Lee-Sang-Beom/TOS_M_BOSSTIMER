@@ -34,7 +34,7 @@ export default function Navigation() {
                 <Menu.Item className="hover:text-gray-900" name="home" active={activeItem === 'home'} onClick={goLink} />
                 <Menu.Item className="hover:text-gray-900" name="admin" active={activeItem === 'admin'} onClick={goLink} />
                 <Menu.Item className="hover:text-gray-900" name="help" active={activeItem === 'help'} onClick={goLink} />
-                <Menu.Item className="hover:text-gray-900" name="로그아웃" position='right' onClick={onLogOutClick} />
+                <Menu.Item className="hover:text-gray-900" name="로그아웃" onClick={onLogOutClick} />
             </Menu>
         </nav>
     );
