@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { Label } from "semantic-ui-react";
 
 const padNumber = (num, length) => {
   return String(num).padStart(length, "0");
@@ -76,10 +77,11 @@ const Timer = (props) => {
           <p className="text-sm text-indigo-800">{`남은 시간`}</p>
           <p className="text-sm text-red-500">
             {hour} : {min} : {sec}
-            {showWaring && <></>}
           </p>
         </div>
+        {showWaring && <Label basic color='red' pointing> 시간이 지났습니다. 갱신이 필요합니다! </Label>}
       </div>
+
     </>
   );
 };
