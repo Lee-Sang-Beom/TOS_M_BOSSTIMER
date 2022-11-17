@@ -19,7 +19,6 @@ const handleTimeDifference = (year, month, day, hour, min, sec) => {
 }
 
 const Timer = (props) => {
-  
   let diffSec;
   let diffMin;
   let diffHour;
@@ -42,6 +41,7 @@ const Timer = (props) => {
   const [sec, setSec] = useState(padNumber(tempSec, 2));
 
   useEffect(() => {
+    // useRef 사용 : useRef를 사용한 interval.current 값을 initalTime를 이용해 사용
     interval.current = setInterval(() => {
       initialTime.current -= 1;
       setSec(padNumber(initialTime.current % 60, 2));
@@ -55,23 +55,17 @@ const Timer = (props) => {
   // initialTime을 검사해서 0이 되면 interval을 멈춘다.
   useEffect(() => {
     if (initialTime.current <= 0) {
+
+      // 종료조건 : 타이머 종료
       clearInterval(interval.current);
+
+      // 타이머 종료 시, 이 때 알림을 울리면 됨
     }
   }, [sec]);
 
-  const resetTimer = () => {
-    setHour(padNumber(tempHour, 2));
-    setMin(padNumber(tempMin, 2));
-    setSec(padNumber(tempSec, 2));
-    initialTime.current = tempHour * 60 * 60 + tempMin * 60 + tempSec;
-
-    // console.log(Number(hour), Number(min), Number(sec))
-  };
-
   return (
     <>
-      <div className="border border-gray-200 p-3 rounded-lg clock_relative">
-        <div className="clock_icon">🧭</div>
+      <div className="border border-gray-200 mt-2 p-3 rounded-lg">
         <div className="w-full p-4 flex flex-col items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-2">
           <p className="text-sm text-indigo-800">{`남은 시간`}</p>
           <p className="text-sm text-red-500">

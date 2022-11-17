@@ -13,10 +13,11 @@
     position:relative;
 }
 
-.clock_icon{
+.clock_icon_top{
     position: absolute;
     font-size: 1.35rem;
     top:0.7rem;
     left:50%;
     transform: translate(-50%,-50%);
 }
+

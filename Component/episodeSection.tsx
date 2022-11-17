@@ -4,7 +4,7 @@ import Ep02 from "./EP/episode2"
 export default function EpisodeSection() {
 
     return (
-        <section className="text-gray-600 body-font bg-slate-200">
+        <section className="text-gray-600 body-font">
             <div className="px-5 py-24 mx-auto">
                 <Ep01/>
                 <Ep02/>

@@ -3,11 +3,11 @@ import React, { useEffect, useState } from "react"
 import { Segment } from "semantic-ui-react"
 import { dbService } from "../../firebaseConfig.js"
 import Timer from "../Timer.jsx"
-import { ep01BossListAtom } from "../../src/index"
+import { ep02BossListAtom } from "../../src/index"
 import { useRecoilState } from "recoil";
 
 
-export default function Ep01() {
+export default function Ep02() {
 
     // 화면에 표시할 시간 설정
     const [nextYear, setNextYear] = useState([]);
@@ -16,27 +16,71 @@ export default function Ep01() {
     const [nextHour, setNextHour] = useState([]);
     const [nextMinute, setNextMinute] = useState([]);
     const [nextSecond, setNextSecond] = useState([]);
-    const [bossData, setBossData] = useRecoilState(ep01BossListAtom);
+    const [bossData, setBossData] = useRecoilState(ep02BossListAtom);
 
     // episode1의 collection Name
-    const q = query(collection(dbService, "episode1"));
+    const q = query(collection(dbService, "episode2"));
 
     // 설정된 다음 시간을 받아오는 부분
     async function getNextApperanceTime() {
         try {
-            
-            const docSnap1 = await getDoc(doc(dbService, "episode1", "episode1_1"));
-            const docSnap2 = await getDoc(doc(dbService, "episode1", "episode1_2"));
+            const docSnap1 = await getDoc(doc(dbService, "episode2", "episode2_1"));
+            const docSnap2 = await getDoc(doc(dbService, "episode2", "episode2_2"));
+            const docSnap3 = await getDoc(doc(dbService, "episode2", "episode2_3"));
+            const docSnap4 = await getDoc(doc(dbService, "episode2", "episode2_4"));
+            const docSnap5 = await getDoc(doc(dbService, "episode2", "episode2_5"));
 
             const timeField1 = docSnap1.data();
             const timeField2 = docSnap2.data();
+            const timeField3 = docSnap3.data();
+            const timeField4 = docSnap4.data();
+            const timeField5 = docSnap5.data();
 
-            const nextYearList = [timeField1.nextYear, timeField2.nextYear];
-            const nextMonthList = [timeField1.nextMonth, timeField2.nextMonth];
-            const nextDayList = [timeField1.nextDay, timeField2.nextDay];
-            const nextHourList = [timeField1.nextHour, timeField2.nextHour];
-            const nextMinuteList = [timeField1.nextMinute, timeField2.nextMinute];
-            const nextSecondList = [timeField1.nextSecond, timeField2.nextSecond];
+            // 차후 push 사용으로 코드 간소화
+            const nextYearList = [
+              timeField1.nextYear,
+              timeField2.nextYear,
+              timeField3.nextYear,
+              timeField4.nextYear,
+              timeField5.nextYear,
+            ];
+
+            const nextMonthList = [
+              timeField1.nextMonth,
+              timeField2.nextMonth,
+              timeField3.nextMonth,
+              timeField4.nextMonth,
+              timeField5.nextMonth,
+            ];
+
+            const nextDayList = [
+              timeField1.nextDay,
+              timeField2.nextDay,
+              timeField3.nextDay,
+              timeField4.nextDay,
+              timeField5.nextDay,
+            ];
+            const nextHourList = [
+              timeField1.nextHour,
+              timeField2.nextHour,
+              timeField3.nextHour,
+              timeField4.nextHour,
+              timeField5.nextHour,
+            ];
+            const nextMinuteList = [
+              timeField1.nextMinute,
+              timeField2.nextMinute,
+              timeField3.nextMinute,
+              timeField4.nextMinute,
+              timeField5.nextMinute,
+            ];
+            const nextSecondList = [
+              timeField1.nextSecond,
+              timeField2.nextSecond,
+              timeField3.nextSecond,
+              timeField4.nextSecond,
+              timeField5.nextSecond,
+            ];
 
             setNextYear(nextYearList);
             setNextMonth(nextMonthList);
@@ -97,7 +141,7 @@ export default function Ep01() {
 
         // 데이터베이스의 값 설정
         function setDBTime(newData, id) {
-            return setDoc(doc(dbService, `episode1`, `episode1_${id}`), newData, {
+            return setDoc(doc(dbService, `episode2`, `episode2_${id}`), newData, {
                 merge: true,
             });
         }
@@ -158,8 +202,8 @@ export default function Ep01() {
         <section className="text-gray-600 body-font">
             <div className="px-5 py-24 mx-auto text-center">
                 <div className="flex flex-col text-center w-full mb-20">
-                    <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">EP01</h1>
-                    <p className="lg:w-1/3 mx-auto leading-relaxed text-base">에피소드 1의 필드보스 타이머입니다.</p>
+                    <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">EP02</h1>
+                    <p className="lg:w-1/3 mx-auto leading-relaxed text-base">에피소드 2의 필드보스 타이머입니다.</p>
                 </div>
                 <Segment>
                     <div className="flex flex-wrap -m-2">
