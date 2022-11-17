@@ -16,8 +16,8 @@ export default function Navigation() {
             router.push("/home");
         } else if (data.name === "admin") {
             router.push("/admin");
-        } else if (data.name === "help") {
-            router.push("/help");
+        } else if (data.name === "update") {
+            router.push("/update");
         }
     }  
 
@@ -33,8 +33,8 @@ export default function Navigation() {
             <Menu pointing secondary> 
                 <Menu.Item className="hover:text-gray-900" name="home" active={activeItem === 'home'} onClick={goLink} />
                 <Menu.Item className="hover:text-gray-900" name="admin" active={activeItem === 'admin'} onClick={goLink} />
-                <Menu.Item className="hover:text-gray-900" name="help" active={activeItem === 'help'} onClick={goLink} />
-                <Menu.Item />
+                <Menu.Item className="hover:text-gray-900" name="update" active={activeItem === 'update'} onClick={goLink} />
+                <div className="hidden md:block"><Menu.Item></Menu.Item></div>
                 <Menu.Menu position="right">
                     <Menu.Item className="hover:text-gray-900" name="로그아웃" onClick={onLogOutClick} />
                 </Menu.Menu>
