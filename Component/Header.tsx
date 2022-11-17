@@ -1,5 +1,3 @@
-import { userLoginMonitoringAtom } from "../src/index"
-import { useRecoilState } from 'recoil'
 import Navigation from "./Nav"
 import Image from "next/image"
 import logo from "../public/img/tosmLogo.jpg"
