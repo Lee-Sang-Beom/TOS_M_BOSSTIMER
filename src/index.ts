@@ -12,7 +12,7 @@ export const ep01BossListAtom = atom({
       id : 2,
       area: '수정 광산',
       bossName: '강인한 스펙터 군주',
-      time: '3'
+      time: '2'
     }
 
   ]

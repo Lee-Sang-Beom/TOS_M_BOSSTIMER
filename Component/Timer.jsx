@@ -4,11 +4,34 @@ const padNumber = (num, length) => {
   return String(num).padStart(length, "0");
 };
 
+const handleTimeDifference = (year, month, day, hour, min, sec) => {
+  if(year && month && day && hour && min && sec){
+    const end = new Date(year, month-1, day, hour, min, sec);
+    const start = new Date();
+
+    const diffSec = Math.floor((end.getTime() - start.getTime()) / (1000) % 60);
+    const diffMin = Math.floor((end.getTime() - start.getTime()) / (1000*60) % 60);
+    const diffHour = Math.floor((end.getTime() - start.getTime()) / (1000*60*60));
+
+    return [diffSec, diffMin, diffHour];
+  }
+  
+}
+
 const Timer = (props) => {
+  
+  let diffSec;
+  let diffMin;
+  let diffHour;
+  
+  if (handleTimeDifference(props.year, props.month, props.day, props.hour, props.min, props.sec)){
+    [diffSec, diffMin, diffHour] = handleTimeDifference(props.year, props.month, props.day, props.hour, props.min, props.sec)
+  }
+
   // 아무것도 입력하지 않으면 undefined가 들어오기 때문에 유효성 검사부터..
-  const tempHour = props.hour ? parseInt(props.hour) : 2;
-  const tempMin = props.min ? parseInt(props.min) : 0;
-  const tempSec = props.sec ? parseInt(props.sec) : 0;
+  const tempHour = diffHour ? parseInt(diffHour) : 0;
+  const tempMin = diffMin ? parseInt(diffMin) : 0;
+  const tempSec = diffSec ? parseInt(diffSec) : 0;
 
   // 타이머를 초단위로 변환한 initialTime과 setInterval을 저장할 interval ref
   let initialTime = useRef(tempHour * 60 * 60 + tempMin * 60 + tempSec);

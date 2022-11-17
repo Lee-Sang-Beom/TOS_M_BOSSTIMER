@@ -10,6 +10,7 @@ import { useRecoilState } from "recoil";
 export default function Ep01() {
 
     // 화면에 표시할 시간 설정
+    const [nextYear, setNextYear] = useState([]);
     const [nextMonth, setNextMonth] = useState([]);
     const [nextDay, setNextDay] = useState([]);
     const [nextHour, setNextHour] = useState([]);
@@ -23,23 +24,27 @@ export default function Ep01() {
     // 설정된 다음 시간을 받아오는 부분
     async function getNextApperanceTime() {
         try {
+            
             const docSnap1 = await getDoc(doc(dbService, "episode1", "episode1_1"));
             const docSnap2 = await getDoc(doc(dbService, "episode1", "episode1_2"));
 
             const timeField1 = docSnap1.data();
             const timeField2 = docSnap2.data();
 
+            const nextYearList = [timeField1.nextYear, timeField2.nextYear];
             const nextMonthList = [timeField1.nextMonth, timeField2.nextMonth];
             const nextDayList = [timeField1.nextDay, timeField2.nextDay];
             const nextHourList = [timeField1.nextHour, timeField2.nextHour];
             const nextMinuteList = [timeField1.nextMinute, timeField2.nextMinute];
             const nextSecondList = [timeField1.nextSecond, timeField2.nextSecond];
 
+            setNextYear(nextYearList);
             setNextMonth(nextMonthList);
             setNextDay(nextDayList);
             setNextHour(nextHourList);
             setNextMinute(nextMinuteList);
             setNextSecond(nextSecondList);
+
         } catch (error) {
             alert(new Error(error));
         }
@@ -60,6 +65,7 @@ export default function Ep01() {
               ...doc.data(),
             }));
 
+            const nextYearList = [];
             const nextMonthList = [];
             const nextDayList = [];
             const nextHourList = [];
@@ -67,6 +73,7 @@ export default function Ep01() {
             const nextSecondList = [];
             
             newData.map((data)=>{
+                nextYearList.push(data.nextYear);
                 nextMonthList.push(data.nextMonth);
                 nextDayList.push(data.nextDay);
                 nextHourList.push(data.nextHour);
@@ -74,6 +81,7 @@ export default function Ep01() {
                 nextSecondList.push(data.nextSecond);
             })
 
+            setNextYear(nextYearList);
             setNextMonth(nextMonthList);
             setNextDay(nextDayList);
             setNextHour(nextHourList);
@@ -95,13 +103,15 @@ export default function Ep01() {
         }
 
         // 다음 시간 설정
-        function setNextApperanceTime() {
+        function setNextApperanceTime(e) {
             let date = new Date();
 
             // 2시간 추가
             date.setHours(date.getHours() + Number(time));
 
             // 2시간 추가했을 때의 문자열 반환
+
+            const nextDBYear = String(date.getFullYear());
             const nextDBMonth = String(date.getMonth() + 1).padStart(2, "0");
             const nextDBDay = String(date.getDate()).padStart(2, "0");
             const nextDBHour = String(date.getHours()).padStart(2, "0");
@@ -109,6 +119,7 @@ export default function Ep01() {
             const nextDBSecond = String(date.getSeconds()).padStart(2, "0");
 
             setDBTime({
+                nextYear : nextDBYear,
                 nextMonth: nextDBMonth,
                 nextDay: nextDBDay,
                 nextHour: nextDBHour,
@@ -127,19 +138,20 @@ export default function Ep01() {
                             <div className="clock_icon">🧭</div>
                             <div className="w-full p-4 flex flex-col items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-2">
                                 <p className="text-sm text-indigo-800">{`필드 이벤트 시작 시간 `}</p>
-                                <p className="mt-2">{`${nextMonth[id-1]}월 ${nextDay[id-1]}일 ${nextHour[id-1]}시 ${nextMinute[id-1]}분`}</p>
+                                <p className="mt-2">{`${nextYear[id-1]}년 ${nextMonth[id-1]}월 ${nextDay[id-1]}일 ${nextHour[id-1]}시 ${nextMinute[id-1]}분`}</p>
                             </div>
                             <button className = "inline-flex text-white bg-indigo-500 border-0 py-1 px-4 focus:outline-none hover:bg-indigo-600 rounded" onClick={setNextApperanceTime}>
                                 갱신하기 
-                            </button>                        
+                            </button>         
+                            <Timer year={nextYear[id-1]} month={nextMonth[id-1]} day={nextDay[id-1]} hour={nextHour[id-1]} min={nextMinute[id-1]} sec={nextSecond[id-1]} />
                         </div>
-
-                        <Timer hour={time} min={0} sec={0} />
                     </div>
                 </div>
             </div>
         )
     }
+
+    
 
 
     return (
