@@ -131,29 +131,29 @@ export const ep06BossListAtom= atom({
   default: [
     {
       id : 1,
-      area: '네프리타스 벼랑',
-      bossName: '강인한 쓰론위버',
+      area: '우키스 경작지',
+      bossName: '강인한 타우마스',
       time: '2'
     },{
       id : 2,
-      area: '테넷 화원',
+      area: '봄볕나무 숲',
       bossName: '강인한 네펜더스',
       time: '2'
     },{
       id : 3,
-      area: '테넷 성당 지하 1층',
-      bossName: '비겁한 사이클롭스',
+      area: '관문로',
+      bossName: '강인한 체이퍼',
       time: '2'
     },{
       id : 4,
-      area: '테넷 성당 지상 1층',
-      bossName: '강인한 말렛와이번',
+      area: '시르드겔라 숲',
+      bossName: '강인한 아콘',
       time: '2'
     },{
       id : 5,
-      area: '테넷 성당 지상 2층',
-      bossName: '강인한 네크로벤터',
-      time: '2'
+      area: '크바일라스 숲',
+      bossName: '분노한 브람블',
+      time: '4'
     }
   ]
 });
@@ -163,29 +163,24 @@ export const ep07BossListAtom= atom({
   default: [
     {
       id : 1,
-      area: '네프리타스 벼랑',
-      bossName: '강인한 쓰론위버',
+      area: '자카리엘 교차로',
+      bossName: '비겁한 베아카라스',
       time: '2'
     },{
       id : 2,
-      area: '테넷 화원',
-      bossName: '강인한 네펜더스',
+      area: '왕릉 1층',
+      bossName: '강인한 툼로드',
       time: '2'
     },{
       id : 3,
-      area: '테넷 성당 지하 1층',
-      bossName: '비겁한 사이클롭스',
+      area: '왕릉 2층',
+      bossName: '강인한 고르카스',
       time: '2'
     },{
       id : 4,
-      area: '테넷 성당 지상 1층',
-      bossName: '강인한 말렛와이번',
-      time: '2'
-    },{
-      id : 5,
-      area: '테넷 성당 지상 2층',
-      bossName: '강인한 네크로벤터',
-      time: '2'
+      area: '왕릉 3층',
+      bossName: '분노한 렉시퍼',
+      time: '4'
     }
   ]
 });
@@ -195,29 +190,34 @@ export const ep08BossListAtom= atom({
   default: [
     {
       id : 1,
-      area: '네프리타스 벼랑',
-      bossName: '강인한 쓰론위버',
+      area: '아렐르노 남작령',
+      bossName: '비겁한 스콜피오',
       time: '2'
     },{
       id : 2,
-      area: '테넷 화원',
-      bossName: '강인한 네펜더스',
+      area: '수로교 지역',
+      bossName: '강인한 코럽티드',
       time: '2'
     },{
       id : 3,
-      area: '테넷 성당 지하 1층',
-      bossName: '비겁한 사이클롭스',
+      area: '마족수감소 1구역',
+      bossName: '강인한 블룻',
       time: '2'
     },{
       id : 4,
-      area: '테넷 성당 지상 1층',
-      bossName: '강인한 말렛와이번',
+      area: '마족수감소 3구역',
+      bossName: '비겁한 누아엘레',
       time: '2'
     },{
       id : 5,
-      area: '테넷 성당 지상 2층',
-      bossName: '강인한 네크로벤터',
+      area: '마족수감소 4구역',
+      bossName: '강인한 디오니스',
       time: '2'
+    },{
+      id : 6,
+      area: '마족수감소 5구역',
+      bossName: '분노한 하우벅',
+      time: '4'
     }
   ]
 });

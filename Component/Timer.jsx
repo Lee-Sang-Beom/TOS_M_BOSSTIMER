@@ -32,6 +32,9 @@ const Timer = (props) => {
   const tempMin = diffMin ? parseInt(diffMin) : 0;
   const tempSec = diffSec ? parseInt(diffSec) : 0;
 
+  // 만약 timer가 종료되면, true로 변경되며 사용자들에게 갱신의 필요성을 알림..
+  const [showWaring, setShowWarning] = useState(false);
+
   // 타이머를 초단위로 변환한 initialTime과 setInterval을 저장할 interval ref
   let initialTime = useRef(tempHour * 60 * 60 + tempMin * 60 + tempSec);
   const interval = useRef(0);
@@ -44,7 +47,7 @@ const Timer = (props) => {
     // useRef 사용 : useRef를 사용한 interval.current 값을 initalTime를 이용해 사용
     interval.current = setInterval(() => {
       initialTime.current -= 1;
-      setSec(padNumber(initialTime.current % 60, 2));
+      setSec(padNumber(parseInt(initialTime.current % 60), 2));
       setMin(padNumber(parseInt((initialTime.current / 60) % 60), 2));
       setHour(padNumber(parseInt(initialTime.current / 60 / 60), 2));
     }, 1000);
@@ -55,13 +58,16 @@ const Timer = (props) => {
   // initialTime을 검사해서 0이 되면 interval을 멈춘다.
   useEffect(() => {
     if (initialTime.current <= 0) {
-
+      setSec(padNumber(0, 2));
+      setMin(padNumber(0, 2));
+      setHour(padNumber(0, 2));
+      setShowWarning(true);
       // 종료조건 : 타이머 종료
       clearInterval(interval.current);
-
       // 타이머 종료 시, 이 때 알림을 울리면 됨
     }
   }, [sec]);
+
 
   return (
     <>
@@ -70,6 +76,7 @@ const Timer = (props) => {
           <p className="text-sm text-indigo-800">{`남은 시간`}</p>
           <p className="text-sm text-red-500">
             {hour} : {min} : {sec}
+            {showWaring && <></>}
           </p>
         </div>
       </div>
