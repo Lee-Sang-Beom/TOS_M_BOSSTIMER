@@ -47,10 +47,15 @@ const Timer = (props) => {
 
   return (
     <>
-      <p className="text-sm text-red-500">
-        {hour} : {min} : {sec}
-      </p>
-      <button className="animate-pulse rounded hover:rounded-lg text-xs bg-slate-800 text-white p-2 mt-2" onClick={resetTimer}>초기화</button>
+      <div className="border border-gray-200 p-3 rounded-lg clock_relative">
+        <div className="clock_icon">🧭</div>
+        <div className="w-full p-4 flex flex-col items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-2">
+          <p className="text-sm text-indigo-800">{`남은 시간`}</p>
+          <p className="text-sm text-red-500">
+            {hour} : {min} : {sec}
+          </p>
+        </div>
+      </div>
     </>
   );
 };

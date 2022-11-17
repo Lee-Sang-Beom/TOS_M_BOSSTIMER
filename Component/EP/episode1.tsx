@@ -17,15 +17,20 @@ export default function Ep01() {
     const [nextMinute, setNextMinute] = useState("");
     const [nextSecond, setextSecond] = useState("");
 
-    const [currentTime_01, setCurrentTime_01] = useState("");
-    const [currentTime_02, setCurrentTime_02] = useState("");
+    // episode1의 collection Name
+    const q = query(collection(dbService, "episode1"));
 
+    const [currentTime_01, setCurrentTime_01] = useState("2");
+    const [currentTime_02, setCurrentTime_02] = useState("3");
+
+    // 데이터베이스의 값 설정
     function setDBTime(newData: object) {
         return setDoc(doc(dbService, "episode1", "episode1_1"), newData, {
             merge: true,
         });
     }
 
+    // 다음 시간 설정
     function setNextApperanceTime() {
         let date = new Date();
 
@@ -51,6 +56,7 @@ export default function Ep01() {
         setextSecond(nextDBSecond);
     }
 
+    // 설정된 다음 시간을 받아오는 부분
     async function getNextApperanceTime() {
         try {
             const docSnap = await getDoc(doc(dbService, "episode1", "episode1_1"));
@@ -66,11 +72,14 @@ export default function Ep01() {
 
     }
 
+
+    // 매 첫 렌더링 때마다, 값을 받아옴
     useEffect(() => {
         getNextApperanceTime();
     }, [])
 
-    const q = query(collection(dbService, "episode1"));
+
+    // 매 첫 렌더링 때마다, 데이터베이스로부터 값을 얻어와 state값을 초기화함 
     useEffect(()=>{
         onSnapshot(q, (snapshot:any) => {
             const newData = snapshot.docs.map((doc:any) => ({
@@ -91,9 +100,20 @@ export default function Ep01() {
                     <div className="flex-grow">
                         <h2 className="text-gray-900 mb-1 text-lg font-semibold">{`- ${areaName} -`}</h2>
                         <p className="text-gray-900 mb-4 text-base">{`${bossName}`}</p>
-                        <button onClick={setNextApperanceTime}> 갱신하기 </button>
-                        <p>출현시간 : {`${nextDay}일 ${nextHour}시 ${nextMinute}분`}</p>
+
+                        <div className="border border-gray-200 p-3 rounded-lg clock_relative">
+                            <div className="clock_icon">🧭</div>
+                            <div className="w-full p-4 flex flex-col items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-2">
+                                <p className="text-sm text-indigo-800">{`필드 이벤트 시작 시간 `}</p>
+                                <p className="mt-2">{`${nextDay}일 ${nextHour}시 ${nextMinute}분`}</p>
+                            </div>
+                            <button className = "inline-flex text-white bg-indigo-500 border-0 py-1 px-4 focus:outline-none hover:bg-indigo-600 rounded" onClick={setNextApperanceTime}>
+                                갱신하기 
+                            </button>                        
+                        </div>
+
                         <Timer hour={time} min={0} sec={0} />
+
                     </div>
                 </div>
             </div>
