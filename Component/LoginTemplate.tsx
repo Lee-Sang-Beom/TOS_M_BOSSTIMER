@@ -5,8 +5,7 @@ import { doc, setDoc } from "firebase/firestore";
 import { dbService as db } from "../firebaseConfig";
 import { Form, Label } from "semantic-ui-react";
 import LoginForm from "./LoginForm";
-import { useRecoilState } from "recoil";
-import { userLoginMonitoringAtom } from "../src";
+
 
 export default function LoginTemplate() {
 
