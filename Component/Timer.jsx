@@ -97,9 +97,9 @@ const Timer = (props) => {
       clearInterval(interval.current);
     }
 
-    if((Number(hour)===0 && Number(min) <= 5) && showToast && initialTime.current > 0) {
-      notify(`필드보스 ${props.name}의 필드 이벤트가 얼마 남지 않았습니다!`);
-    }
+    // if((Number(hour)===0 && Number(min) <= 5) && showToast && initialTime.current > 0) {
+    //   notify(`필드보스 ${props.name}의 필드 이벤트가 얼마 남지 않았습니다!`);
+    // }
 
   }, [sec]);
 
