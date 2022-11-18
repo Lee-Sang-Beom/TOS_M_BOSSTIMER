@@ -16,6 +16,7 @@ const handleTimeDifference = (year, month, day, hour, min, sec) => {
 
     return [diffSec, diffMin, diffHour];
   }
+
 }
 
 const Timer = (props) => {
@@ -74,9 +75,11 @@ const Timer = (props) => {
       <div className="border border-gray-200 mt-2 p-3 rounded-lg">
         <div className="w-full p-4 flex flex-col items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-2">
           <p className="text-sm text-indigo-800">{`남은 시간`}</p>
-          <p className="text-sm text-red-500">
+          <span className="flex">
+          <p className="text-sm text-red-500 hover:animate-spin w-full h-full">
             {hour} : {min} : {sec}
           </p>
+          </span>
         </div>
         {showWaring && <Label basic color='red' pointing> 시간이 지났습니다. 갱신이 필요합니다! </Label>}
       </div>

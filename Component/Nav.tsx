@@ -1,7 +1,7 @@
 import { useRouter } from "next/router"
 import { useState, useEffect } from "react"
 import 'semantic-ui-css/semantic.min.css'
-import { Menu } from "semantic-ui-react";
+import { Label, Menu } from "semantic-ui-react";
 import { authService as auth } from "../firebaseConfig";
 
 
@@ -33,7 +33,7 @@ export default function Navigation() {
             <Menu pointing secondary> 
                 <Menu.Item className="hover:text-gray-900" name="home" active={activeItem === 'home'} onClick={goLink} />
                 <Menu.Item className="hover:text-gray-900" name="admin" active={activeItem === 'admin'} onClick={goLink} />
-                <Menu.Item className="hover:text-gray-900" name="update" active={activeItem === 'update'} onClick={goLink} />
+                <Menu.Item className="hover:text-gray-900" name="update" active={activeItem === 'update'} onClick={goLink}/>
                 <div className="hidden md:block"><Menu.Item></Menu.Item></div>
                 <Menu.Menu position="right">
                     <Menu.Item className="hover:text-gray-900" name="로그아웃" onClick={onLogOutClick} />

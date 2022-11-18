@@ -1,6 +1,6 @@
 import { collection, doc, getDoc, onSnapshot, query, setDoc } from "firebase/firestore"
 import React, { useEffect, useState } from "react"
-import { Segment } from "semantic-ui-react"
+import { Button, Dimmer, Modal, Segment } from "semantic-ui-react"
 import { dbService } from "../../firebaseConfig.js"
 import Timer from "../Timer.jsx"
 import { ep08BossListAtom } from "../../src/index"
@@ -161,6 +161,7 @@ export default function Ep07() {
             setNextMinute(nextMinuteList);
             setNextSecond(nextSecondList);
 
+            
         } catch (error) {
             alert(new Error(error));
         }
@@ -215,7 +216,9 @@ export default function Ep07() {
         function setDBTime(newData, id) {
             return setDoc(doc(dbService, `episode8`, `episode8_${id}`), newData, {
                 merge: true,
-            }).then(()=> getNextApperanceTime());
+            }).then(()=> {
+                getNextApperanceTime();
+            });
         
         }
 
@@ -243,31 +246,45 @@ export default function Ep07() {
                 nextMinute: nextDBMinute,
                 nextSecond: nextDBSecond
             }, id);
-
-
         }
 
         return (
-            <div className="p-4 md:w-1/2 w-full">
-                <div className="h-full flex items-center border-gray-200 border p-4 rounded-lg">
-                    <div className="flex-grow">
-                        <h2 className="text-gray-900 mb-1 text-lg font-semibold">{`- ${areaName} -`}</h2>
-                        <p className="text-gray-900 mb-4 text-base">{`${bossName}`}</p>
-                        <div className="border border-gray-200 p-3 rounded-lg clock_relative">
-                            <div className="clock_icon_top">🧭</div>
-                            <div className="w-full p-4 flex flex-col items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-2">
-                                <p className="text-sm text-indigo-800">{`필드 이벤트 시작 시간 `}</p>
-                                <p className="mt-2">{`${nextYear[id-1]}년 ${nextMonth[id-1]}월 ${nextDay[id-1]}일 ${nextHour[id-1]}시 ${nextMinute[id-1]}분`}</p>
-                            </div>
-                            <button className = "inline-flex text-white bg-indigo-500 border-0 py-1 px-4 focus:outline-none hover:bg-indigo-600 rounded" onClick={setNextApperanceTime}>
-                                갱신하기 
-                            </button>         
-                            <Timer year={nextYear[id-1]} month={nextMonth[id-1]} day={nextDay[id-1]} hour={nextHour[id-1]} min={nextMinute[id-1]} sec={nextSecond[id-1]} />
-                        </div>
-                    </div>
+          <div className="p-4 md:w-1/2 w-full">
+            <div className="h-full flex items-center border-gray-200 border p-4 rounded-lg">
+              <div className="flex-grow">
+                <h2 className="text-gray-900 mb-1 text-lg font-semibold">{`- ${areaName} -`}</h2>
+                <p className="text-gray-900 mb-4 text-base">{`${bossName}`}</p>
+                <div className="border border-gray-200 p-3 rounded-lg clock_relative">
+                  <div className="clock_icon_top">🧭</div>
+                  <div className="w-full p-4 flex flex-col items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-2">
+                    <p className="text-sm text-indigo-800">{`필드 이벤트 시작 시간 `}</p>
+                    <p className="mt-2">{`${nextYear[id - 1]}년 ${
+                      nextMonth[id - 1]
+                    }월 ${nextDay[id - 1]}일 ${nextHour[id - 1]}시 ${
+                      nextMinute[id - 1]
+                    }분`}</p>
+                  </div>
+                  <button
+                    className="inline-flex text-white bg-indigo-500 border-0 py-1 px-4 focus:outline-none hover:bg-indigo-600 rounded "
+                    onClick={setNextApperanceTime}
+                  >
+                    갱신하기
+                  </button>
+
+            
+                  <Timer
+                    year={nextYear[id - 1]}
+                    month={nextMonth[id - 1]}
+                    day={nextDay[id - 1]}
+                    hour={nextHour[id - 1]}
+                    min={nextMinute[id - 1]}
+                    sec={nextSecond[id - 1]}
+                  />
                 </div>
+              </div>
             </div>
-        )
+          </div>
+        );
     }
 
     
