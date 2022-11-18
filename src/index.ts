@@ -206,37 +206,68 @@ export const ep07BossListAtom= atom({
   ]
 });
 
+
 export const ep08BossListAtom= atom({
   key: "ep08BossListAtom", // unique ID
   default: [
     {
       id : 1,
-      area: '아렐르노 남작령',
+      area: '아렐르노 남작령(ch01)',
       bossName: '비겁한 스콜피오',
       time: '2'
     },{
       id : 2,
-      area: '수로교 지역',
-      bossName: '강인한 코럽티드',
+      area: '아렐르노 남작령(ch02)',
+      bossName: '비겁한 스콜피오',
       time: '2'
     },{
       id : 3,
-      area: '마족수감소 1구역',
-      bossName: '강인한 블룻',
+      area: '수로교 지역(ch01)',
+      bossName: '강인한 코럽티드',
       time: '2'
     },{
       id : 4,
-      area: '마족수감소 3구역',
-      bossName: '비겁한 누아엘레',
+      area: '수로교 지역(ch02)',
+      bossName: '강인한 코럽티드',
       time: '2'
     },{
       id : 5,
-      area: '마족수감소 4구역',
-      bossName: '강인한 디오니스',
+      area: '마족수감소 1구역(ch01)',
+      bossName: '강인한 블룻',
       time: '2'
     },{
       id : 6,
-      area: '마족수감소 5구역',
+      area: '마족수감소 1구역(ch02)',
+      bossName: '강인한 블룻',
+      time: '2'
+    },{
+      id : 7,
+      area: '마족수감소 3구역(ch01)',
+      bossName: '비겁한 누아엘레',
+      time: '2'
+    },{
+      id : 8,
+      area: '마족수감소 3구역(ch02)',
+      bossName: '비겁한 누아엘레',
+      time: '2'
+    },{
+      id : 9,
+      area: '마족수감소 4구역(ch01)',
+      bossName: '강인한 디오니스',
+      time: '2'
+    },{
+      id : 10,
+      area: '마족수감소 4구역(ch02)',
+      bossName: '강인한 디오니스',
+      time: '2'
+    },{
+      id : 11,
+      area: '마족수감소 5구역(ch01)',
+      bossName: '분노한 하우벅',
+      time: '4'
+    },{
+      id : 12,
+      area: '마족수감소 5구역(ch02)',
       bossName: '분노한 하우벅',
       time: '4'
     }

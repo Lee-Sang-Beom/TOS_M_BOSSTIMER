@@ -16,7 +16,6 @@ const handleTimeDifference = (year, month, day, hour, min, sec) => {
 
     return [diffSec, diffMin, diffHour];
   }
-  
 }
 
 const Timer = (props) => {
@@ -81,7 +80,6 @@ const Timer = (props) => {
         </div>
         {showWaring && <Label basic color='red' pointing> 시간이 지났습니다. 갱신이 필요합니다! </Label>}
       </div>
-
     </>
   );
 };

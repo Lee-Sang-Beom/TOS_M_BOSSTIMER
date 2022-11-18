@@ -7,7 +7,7 @@ import { ep08BossListAtom } from "../../src/index"
 import { useRecoilState } from "recoil";
 
 
-export default function Ep08() {
+export default function Ep07() {
 
     // 화면에 표시할 시간 설정
     const [nextYear, setNextYear] = useState([]);
@@ -24,12 +24,30 @@ export default function Ep08() {
     // 설정된 다음 시간을 받아오는 부분
     async function getNextApperanceTime() {
         try {
+
+            // 1번째 보스 ch01, ch02
             const docSnap1 = await getDoc(doc(dbService, "episode8", "episode8_1"));
             const docSnap2 = await getDoc(doc(dbService, "episode8", "episode8_2"));
+
+            // 2번째 보스 ch01, ch02
             const docSnap3 = await getDoc(doc(dbService, "episode8", "episode8_3"));
             const docSnap4 = await getDoc(doc(dbService, "episode8", "episode8_4"));
+
+            // 3번째 보스 ch01, ch02
             const docSnap5 = await getDoc(doc(dbService, "episode8", "episode8_5"));
             const docSnap6 = await getDoc(doc(dbService, "episode8", "episode8_6"));
+
+            // 4번째 보스 ch01, ch02
+            const docSnap7 = await getDoc(doc(dbService, "episode8", "episode8_7"));
+            const docSnap8 = await getDoc(doc(dbService, "episode8", "episode8_8"));
+
+            // 5번째 보스 ch01, ch02
+            const docSnap9 = await getDoc(doc(dbService, "episode8", "episode8_9"));
+            const docSnap10 = await getDoc(doc(dbService, "episode8", "episode8_10"));
+
+            // 6번째 보스 ch01, ch02
+            const docSnap11 = await getDoc(doc(dbService, "episode8", "episode8_11"));
+            const docSnap12 = await getDoc(doc(dbService, "episode8", "episode8_12"));
 
             const timeField1 = docSnap1.data();
             const timeField2 = docSnap2.data();
@@ -37,6 +55,13 @@ export default function Ep08() {
             const timeField4 = docSnap4.data();
             const timeField5 = docSnap5.data();
             const timeField6 = docSnap6.data();
+            const timeField7 = docSnap7.data();
+            const timeField8 = docSnap8.data();
+            const timeField9 = docSnap9.data();
+            const timeField10 = docSnap10.data();
+            const timeField11 = docSnap11.data();
+            const timeField12 = docSnap12.data();
+
 
             // 차후 push 사용으로 코드 간소화
             const nextYearList = [
@@ -46,6 +71,12 @@ export default function Ep08() {
               timeField4.nextYear,
               timeField5.nextYear,
               timeField6.nextYear,
+              timeField7.nextYear,
+              timeField8.nextYear,
+              timeField9.nextYear,
+              timeField10.nextYear,
+              timeField11.nextYear,
+              timeField12.nextYear,
             ];
 
             const nextMonthList = [
@@ -55,6 +86,12 @@ export default function Ep08() {
               timeField4.nextMonth,
               timeField5.nextMonth,
               timeField6.nextMonth,
+              timeField7.nextMonth,
+              timeField8.nextMonth,
+              timeField9.nextMonth,
+              timeField10.nextMonth,
+              timeField11.nextMonth,
+              timeField12.nextMonth,
             ];
 
             const nextDayList = [
@@ -64,7 +101,14 @@ export default function Ep08() {
               timeField4.nextDay,
               timeField5.nextDay,
               timeField6.nextDay,
+              timeField7.nextDay,
+              timeField8.nextDay,
+              timeField9.nextDay,
+              timeField10.nextDay,
+              timeField11.nextDay,
+              timeField12.nextDay,
             ];
+
             const nextHourList = [
               timeField1.nextHour,
               timeField2.nextHour,
@@ -72,7 +116,14 @@ export default function Ep08() {
               timeField4.nextHour,
               timeField5.nextHour,
               timeField6.nextHour,
+              timeField7.nextHour,
+              timeField8.nextHour,
+              timeField9.nextHour,
+              timeField10.nextHour,
+              timeField11.nextHour,
+              timeField12.nextHour,
             ];
+
             const nextMinuteList = [
               timeField1.nextMinute,
               timeField2.nextMinute,
@@ -80,7 +131,14 @@ export default function Ep08() {
               timeField4.nextMinute,
               timeField5.nextMinute,
               timeField6.nextMinute,
+              timeField7.nextMinute,
+              timeField8.nextMinute,
+              timeField9.nextMinute,
+              timeField10.nextMinute,
+              timeField11.nextMinute,
+              timeField12.nextMinute,
             ];
+
             const nextSecondList = [
               timeField1.nextSecond,
               timeField2.nextSecond,
@@ -88,6 +146,12 @@ export default function Ep08() {
               timeField4.nextSecond,
               timeField5.nextSecond,
               timeField6.nextSecond,
+              timeField7.nextSecond,
+              timeField8.nextSecond,
+              timeField9.nextSecond,
+              timeField10.nextSecond,
+              timeField11.nextSecond,
+              timeField12.nextSecond,
             ];
 
             setNextYear(nextYearList);
@@ -107,7 +171,7 @@ export default function Ep08() {
     // 매 첫 렌더링 때마다, 값을 받아옴
     useEffect(() => {
         getNextApperanceTime();
-    }, [])
+    },[])
 
 
     // 매 첫 렌더링 때마다, 데이터베이스로부터 값을 얻어와 state값을 초기화함 
@@ -151,7 +215,8 @@ export default function Ep08() {
         function setDBTime(newData, id) {
             return setDoc(doc(dbService, `episode8`, `episode8_${id}`), newData, {
                 merge: true,
-            });
+            }).then(()=> getNextApperanceTime());
+        
         }
 
         // 다음 시간 설정
@@ -178,6 +243,8 @@ export default function Ep08() {
                 nextMinute: nextDBMinute,
                 nextSecond: nextDBSecond
             }, id);
+
+
         }
 
         return (
