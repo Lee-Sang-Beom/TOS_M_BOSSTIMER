@@ -33,7 +33,6 @@ export default function Update() {
         <div className="px-5 py-24 mx-auto flex flex-wrap items-center justify-center">
           <div className="-my-8 divide-y-2 divide-gray-100">
             <UpdateSection/>
-
           </div>
         </div>
       </section>

@@ -163,22 +163,43 @@ export const ep07BossListAtom= atom({
   default: [
     {
       id : 1,
-      area: '자카리엘 교차로',
+      area: '자카리엘 교차로(ch01)',
+      bossName: '비겁한 베아카라스',
+      time: '2'
+    }, 
+    {
+      id : 2,
+      area: '자카리엘 교차로(ch02)',
       bossName: '비겁한 베아카라스',
       time: '2'
     },{
-      id : 2,
-      area: '왕릉 1층',
+      id : 3,
+      area: '왕릉 1층(ch01)',
       bossName: '강인한 툼로드',
       time: '2'
     },{
-      id : 3,
-      area: '왕릉 2층',
+      id : 4,
+      area: '왕릉 1층(ch02)',
+      bossName: '강인한 툼로드',
+      time: '2'
+    },{
+      id : 5,
+      area: '왕릉 2층(ch01)',
       bossName: '강인한 고르카스',
       time: '2'
     },{
-      id : 4,
-      area: '왕릉 3층',
+      id : 6,
+      area: '왕릉 2층(ch02)',
+      bossName: '강인한 고르카스',
+      time: '2'
+    },{
+      id : 7,
+      area: '왕릉 3층(ch01)',
+      bossName: '분노한 렉시퍼',
+      time: '4'
+    },{
+      id : 8,
+      area: '왕릉 3층(ch02)',
       bossName: '분노한 렉시퍼',
       time: '4'
     }
