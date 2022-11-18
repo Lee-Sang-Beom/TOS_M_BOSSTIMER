@@ -163,43 +163,22 @@ export const ep07BossListAtom= atom({
   default: [
     {
       id : 1,
-      area: '자카리엘 교차로(ch01)',
+      area: '자카리엘 교차로',
       bossName: '비겁한 베아카라스',
       time: '2'
-    }, 
-    {
+    },{
       id : 2,
-      area: '자카리엘 교차로(ch02)',
-      bossName: '비겁한 베아카라스',
+      area: '왕릉 1층',
+      bossName: '강인한 툼로드',
       time: '2'
     },{
       id : 3,
-      area: '왕릉 1층(ch01)',
-      bossName: '강인한 툼로드',
+      area: '왕릉 2층',
+      bossName: '강인한 고르카스',
       time: '2'
     },{
       id : 4,
-      area: '왕릉 1층(ch02)',
-      bossName: '강인한 툼로드',
-      time: '2'
-    },{
-      id : 5,
-      area: '왕릉 2층(ch01)',
-      bossName: '강인한 고르카스',
-      time: '2'
-    },{
-      id : 6,
-      area: '왕릉 2층(ch02)',
-      bossName: '강인한 고르카스',
-      time: '2'
-    },{
-      id : 7,
-      area: '왕릉 3층(ch01)',
-      bossName: '분노한 렉시퍼',
-      time: '4'
-    },{
-      id : 8,
-      area: '왕릉 3층(ch02)',
+      area: '왕릉 3층',
       bossName: '분노한 렉시퍼',
       time: '4'
     }
@@ -212,37 +191,38 @@ export const ep08BossListAtom= atom({
   default: [
     {
       id : 1,
-      area: '아렐르노 남작령(ch01)',
+      area: '아렐르노 남작령',
       bossName: '비겁한 스콜피오',
       time: '2'
     },{
       id : 2,
-      area: '수로교 지역(ch01)',
+      area: '수로교 지역',
       bossName: '강인한 코럽티드',
       time: '2'
     },{
       id : 3,
-      area: '마족수감소 1구역(ch01)',
+      area: '마족수감소 1구역',
       bossName: '강인한 블룻',
       time: '2'
     },{
       id : 4,
-      area: '마족수감소 3구역(ch01)',
+      area: '마족수감소 3구역',
       bossName: '비겁한 누아엘레',
       time: '2'
     },{
       id : 5,
-      area: '마족수감소 4구역(ch01)',
+      area: '마족수감소 4구역',
       bossName: '강인한 디오니스',
       time: '2'
     },{
       id : 6,
-      area: '마족수감소 5구역(ch01)',
+      area: '마족수감소 5구역',
       bossName: '분노한 하우벅',
       time: '4'
     }
   ]
 });
+
 
 
 // export const ep08BossListAtom= atom({

@@ -4,15 +4,17 @@ import Ep03 from "./EP/episode3"
 import Ep04 from "./EP/episode4"
 import Ep05 from "./EP/episode5"
 import Ep06 from "./EP/episode6"
-import Ep07 from "./EP/episode7"
-import Ep08 from "./EP/episode8"
+import Ep07 from "./EP/episode7_1"
+import Ep07_2 from "./EP/episode7_2"
+import Ep08 from "./EP/episode8_1"
+import Ep08_2 from "./EP/episode8_2"
 
 export default function EpisodeSection() {
 
     return (
         <section className="text-gray-600 body-font">
             <div className="px-5 py-24 mx-auto">
-                <div className = "text-red-600 font-bold flex justify-center">2022-11-18 23:00부터 ep08에 대한 코드 변경 작업을 수행할 예정입니다. 불편을 드려 죄송합니다.</div>
+                <div className = "text-red-600 font-bold flex justify-center">2022-11-18 23:00부터 ep07, ep08에 대한 코드 변경 작업을 수행할 예정입니다. 불편을 드려 죄송합니다.</div>
                 <Ep01/>
                 <Ep02/>
                 <Ep03/>
@@ -20,7 +22,9 @@ export default function EpisodeSection() {
                 <Ep05/>
                 <Ep06/>
                 <Ep07/>
+                <Ep07_2/>
                 <Ep08/>
+                <Ep08_2/>
             </div>
         </section>
     )

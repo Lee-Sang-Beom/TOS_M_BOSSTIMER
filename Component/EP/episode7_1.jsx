@@ -7,7 +7,7 @@ import { ep07BossListAtom } from "../../src/index"
 import { useRecoilState } from "recoil";
 
 
-export default function Ep07() {
+export default function Ep07_Ch1() {
 
     // 화면에 표시할 시간 설정
     const [nextYear, setNextYear] = useState([]);
@@ -24,31 +24,16 @@ export default function Ep07() {
     // 설정된 다음 시간을 받아오는 부분
     async function getNextApperanceTime() {
         try {
-
-            // 1번째 보스 ch01, ch02
             const docSnap1 = await getDoc(doc(dbService, "episode7", "episode7_1"));
             const docSnap2 = await getDoc(doc(dbService, "episode7", "episode7_2"));
-
-            // 2번째 보스 ch01, ch02
             const docSnap3 = await getDoc(doc(dbService, "episode7", "episode7_3"));
             const docSnap4 = await getDoc(doc(dbService, "episode7", "episode7_4"));
-
-            // 3번째 보스 ch01, ch02
-            const docSnap5 = await getDoc(doc(dbService, "episode7", "episode7_5"));
-            const docSnap6 = await getDoc(doc(dbService, "episode7", "episode7_6"));
-
-            // 4번째 보스 ch01, ch02
-            const docSnap7 = await getDoc(doc(dbService, "episode7", "episode7_7"));
-            const docSnap8 = await getDoc(doc(dbService, "episode7", "episode7_8"));
 
             const timeField1 = docSnap1.data();
             const timeField2 = docSnap2.data();
             const timeField3 = docSnap3.data();
             const timeField4 = docSnap4.data();
-            const timeField5 = docSnap5.data();
-            const timeField6 = docSnap6.data();
-            const timeField7 = docSnap7.data();
-            const timeField8 = docSnap8.data();
+
 
             // 차후 push 사용으로 코드 간소화
             const nextYearList = [
@@ -56,10 +41,6 @@ export default function Ep07() {
               timeField2.nextYear,
               timeField3.nextYear,
               timeField4.nextYear,
-              timeField5.nextYear,
-              timeField6.nextYear,
-              timeField7.nextYear,
-              timeField8.nextYear,
             ];
 
             const nextMonthList = [
@@ -67,10 +48,6 @@ export default function Ep07() {
               timeField2.nextMonth,
               timeField3.nextMonth,
               timeField4.nextMonth,
-              timeField5.nextMonth,
-              timeField6.nextMonth,
-              timeField7.nextMonth,
-              timeField8.nextMonth,
             ];
 
             const nextDayList = [
@@ -78,10 +55,6 @@ export default function Ep07() {
               timeField2.nextDay,
               timeField3.nextDay,
               timeField4.nextDay,
-              timeField5.nextDay,
-              timeField6.nextDay,
-              timeField7.nextDay,
-              timeField8.nextDay,
             ];
 
             const nextHourList = [
@@ -89,10 +62,6 @@ export default function Ep07() {
               timeField2.nextHour,
               timeField3.nextHour,
               timeField4.nextHour,
-              timeField5.nextHour,
-              timeField6.nextHour,
-              timeField7.nextHour,
-              timeField8.nextHour,
             ];
 
             const nextMinuteList = [
@@ -100,10 +69,6 @@ export default function Ep07() {
               timeField2.nextMinute,
               timeField3.nextMinute,
               timeField4.nextMinute,
-              timeField5.nextMinute,
-              timeField6.nextMinute,
-              timeField7.nextMinute,
-              timeField8.nextMinute,
             ];
 
             const nextSecondList = [
@@ -111,10 +76,6 @@ export default function Ep07() {
               timeField2.nextSecond,
               timeField3.nextSecond,
               timeField4.nextSecond,
-              timeField5.nextSecond,
-              timeField6.nextSecond,
-              timeField7.nextSecond,
-              timeField8.nextSecond,
             ];
 
             setNextYear(nextYearList);
@@ -236,10 +197,12 @@ export default function Ep07() {
     return (
         <section className="text-gray-600 body-font">
             <div className="px-5 py-24 mx-auto text-center">
-                <div className="flex flex-col text-center w-full mb-20">
-                    <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">EP07</h1>
-                    <p className="lg:w-1/3 mx-auto leading-relaxed text-base">에피소드 7의 필드보스 타이머입니다.</p>
-                </div>
+            <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">
+                {`EP07(채널 1)`}
+            </h1>
+            <p className="lg:w-1/2 mx-auto leading-relaxed text-base">
+                {`에피소드7 (채널 1)의 필드보스 타이머입니다.`}
+            </p>
                 <Segment>
                     <div className="flex flex-wrap -m-2">
                             {
