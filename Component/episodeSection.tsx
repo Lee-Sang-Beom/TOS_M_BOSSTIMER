@@ -12,8 +12,7 @@ export default function EpisodeSection() {
     return (
         <section className="text-gray-600 body-font">
             <div className="px-5 py-24 mx-auto">
-
-                <div className = "text-red-600 font-bold flex justify-center">최신내용의 업데이트가 있습니다. 상단의 업데이트 바를 눌러 확인해주세요!</div>
+                <div className = "text-red-600 font-bold flex justify-center">2022-11-18 23:00부터 ep08에 대한 코드 변경 작업을 수행할 예정입니다. 불편을 드려 죄송합니다.</div>
                 <Ep01/>
                 <Ep02/>
                 <Ep03/>

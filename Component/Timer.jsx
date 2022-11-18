@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Label } from "semantic-ui-react";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const padNumber = (num, length) => {
   return String(num).padStart(length, "0");
@@ -19,13 +21,30 @@ const handleTimeDifference = (year, month, day, hour, min, sec) => {
 
 }
 
+
 const Timer = (props) => {
   let diffSec;
   let diffMin;
   let diffHour;
-  
-  if (handleTimeDifference(props.year, props.month, props.day, props.hour, props.min, props.sec)){
-    [diffSec, diffMin, diffHour] = handleTimeDifference(props.year, props.month, props.day, props.hour, props.min, props.sec)
+
+  if (
+    handleTimeDifference(
+      props.year,
+      props.month,
+      props.day,
+      props.hour,
+      props.min,
+      props.sec
+    )
+  ) {
+    [diffSec, diffMin, diffHour] = handleTimeDifference(
+      props.year,
+      props.month,
+      props.day,
+      props.hour,
+      props.min,
+      props.sec
+    );
   }
 
   // 아무것도 입력하지 않으면 undefined가 들어오기 때문에 유효성 검사부터..
@@ -33,8 +52,18 @@ const Timer = (props) => {
   const tempMin = diffMin ? parseInt(diffMin) : 0;
   const tempSec = diffSec ? parseInt(diffSec) : 0;
 
-  // 만약 timer가 종료되면, true로 변경되며 사용자들에게 갱신의 필요성을 알림..
+  // 만약 timer가 종료되면, true로 변경되며 사용자들에게 갱신의 필요성을 알림.
   const [showWaring, setShowWarning] = useState(false);
+
+  // 1회 알림 출력 후에는, 연속으로 출력하지 못하도록 상태를 관리한다.
+  
+  const [showToast, setShowToast] = useState(true);
+
+  // 타이머 종료 시, 어떤 보스인지 출력하기 위한 함수
+  const notify = (text) => {
+    toast(text);
+    setShowToast(false);
+  };
 
   // 타이머를 초단위로 변환한 initialTime과 setInterval을 저장할 interval ref
   let initialTime = useRef(tempHour * 60 * 60 + tempMin * 60 + tempSec);
@@ -63,25 +92,34 @@ const Timer = (props) => {
       setMin(padNumber(0, 2));
       setHour(padNumber(0, 2));
       setShowWarning(true);
+
       // 종료조건 : 타이머 종료
       clearInterval(interval.current);
-      // 타이머 종료 시, 이 때 알림을 울리면 됨
     }
-  }, [sec]);
 
+    if((Number(hour)===0 && Number(min) <= 5) && showToast && initialTime.current > 0) {
+      notify(`필드보스 ${props.name}의 필드 이벤트가 얼마 남지 않았습니다!`);
+    }
+
+  }, [sec]);
 
   return (
     <>
+      <ToastContainer />
       <div className="border border-gray-200 mt-2 p-3 rounded-lg">
         <div className="w-full p-4 flex flex-col items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-2">
           <p className="text-sm text-indigo-800">{`남은 시간`}</p>
           <span className="flex">
-          <p className="text-sm text-red-500 hover:animate-spin w-full h-full">
-            {hour} : {min} : {sec}
-          </p>
+            <p className="text-sm text-red-500 hover:animate-spin w-full h-full">
+              {hour} : {min} : {sec}
+            </p>
           </span>
         </div>
-        {showWaring && <Label basic color='red' pointing> 시간이 지났습니다. 갱신이 필요합니다! </Label>}
+        {showWaring && (
+          <Label basic color="red" pointing>
+            시간이 지났습니다. 갱신이 필요합니다!
+          </Label>
+        )}
       </div>
     </>
   );
