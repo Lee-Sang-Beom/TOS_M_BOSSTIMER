@@ -2,22 +2,37 @@
 @tailwind components;
 @tailwind utilities;
 
-.container{
+.container {
     margin: 0 auto;
     height: 100vh;
 }
 
 
 /* 에피소드 별, 시계 아이콘 배치 위치를 결정하기 위해 사용 */
-.clock_relative{
-    position:relative;
+.clock_relative {
+    position: relative;
 }
 
-.clock_icon_top{
+.clock_icon_top {
     position: absolute;
     font-size: 1.35rem;
-    top:0.7rem;
-    left:50%;
-    transform: translate(-50%,-50%);
+    top: 0.7rem;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
+/* This only changes this particular animation duration */
+.animate__animated.animate__fadeInDownBig {
+    --animate-duration: 3s;
+    --animate-delay: 4s;
+}
+
+.animate__animated.animate__flipInX {
+    --animate-duration: 4s;
+    --animate-delay: 4s;
+}
+
+.animate__animated.animate__bounceIn{
+    --animate-duration: 1s;
+    --animate-delay: 4s;
+}

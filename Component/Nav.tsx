@@ -1,7 +1,7 @@
 import { useRouter } from "next/router"
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import 'semantic-ui-css/semantic.min.css'
-import { Label, Menu } from "semantic-ui-react";
+import { Menu } from "semantic-ui-react";
 import { authService as auth } from "../firebaseConfig";
 
 

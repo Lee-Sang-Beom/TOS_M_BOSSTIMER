@@ -1,11 +1,11 @@
 import { authService as auth } from "../firebaseConfig";
 import { useState } from "react";
-import { createUserWithEmailAndPassword, fetchSignInMethodsForEmail, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
 import { dbService as db } from "../firebaseConfig";
-import { Form, Label } from "semantic-ui-react";
+import { Form } from "semantic-ui-react";
 import LoginForm from "./LoginForm";
-
+import 'animate.css';
 
 export default function LoginTemplate() {
 
@@ -76,7 +76,7 @@ export default function LoginTemplate() {
     }
 
     return (
-        <div className="lg:w-3/6 md:w-1/2 bg-gray-100 rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0">
+        <div className="lg:w-3/6 md:w-1/2 bg-gray-100 rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0 animate__animated animate__zoomIn">
             <h2 className="text-gray-900 text-lg font-medium title-font mb-5">{!newAccount ? `로그인` : `회원가입`}</h2>
             <Form onSubmit={onSubmit}>
 
