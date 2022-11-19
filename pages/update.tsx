@@ -28,7 +28,7 @@ export default function Update() {
           <div className="-my-8 divide-y-2 divide-gray-100">
 
             {/* v1.2.0 업데이트 내용 */}
-            <UpdateSection version="UPDATE v1.2.0" date="2022-11-18">
+            <UpdateSection version="UPDATE v1.2.0" date="2022-11-19">
               <div>
                 <h2 className="text-xl font-medium text-gray-900 title-font mb-2">
                   {`타이머 알림 기능 추가`}
