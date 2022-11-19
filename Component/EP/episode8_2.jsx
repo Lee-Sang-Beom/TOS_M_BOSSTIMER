@@ -155,7 +155,7 @@ export default function Ep08_Ch2() {
 
   const EpContent = ({ id, areaName, bossName, time }) => {
 
-    function notify () {
+    function notify() {
       toast(`에피소드 8(채널 2)의 ${bossName}의 필드 이벤트가 10분 남았어요!`, { limit:1, autoClose:600000, pauseOnFocusLoss:false });
   }
 

@@ -85,7 +85,7 @@ const Timer = (props) => {
     } else {
 
       // 전달된 함수가 존재하고, 타이머가 5분 남았을 때 알림
-      if(props.notify && !Number(hour) && Number(min) === 5 && !Number(sec)){
+      if(props.notify && !Number(hour) && Number(min) === 10 && !Number(sec)){
         props.notify();
       }
     }
