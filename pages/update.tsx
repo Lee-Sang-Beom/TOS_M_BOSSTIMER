@@ -34,10 +34,11 @@ export default function Update() {
                   {`타이머 알림 기능 추가`}
                 </h2>
                 <p className="leading-relaxed text-sm mb-1">
-                  - 모든 필드 보스 이벤트마다 타이머의 남은 시간이 10분일 경우, 브라우저 우측 상단에 알림창이 발생하는 기능을 추가하였습니다.
+                  - 모든 필드의 보스 이벤트마다 타이머의 남은 시간이 <span className="font-bold">10분</span>일 경우, 브라우저 우측 상단에 알림창이 발생하는 기능을 추가하였습니다.
                 </p>
                 <p className="leading-relaxed text-sm mb-1">
-                  - 해당 알림의 지속시간은 타이머의 남은시간이 종료될 때까지 지속되며, 페이지 이동 시 사라집니다.
+                  - 해당 알림의 지속시간은 타이머의 남은시간이 종료될 때까지 지속되며,
+                  <span className="font-bold">{` 페이지 Home에서 다른 페이지로 이동할 경우 `}</span>사라집니다.
                 </p>
               </div>
             </UpdateSection>
