@@ -84,7 +84,7 @@ const Timer = (props) => {
     }
 
 
-    if(!props.showToast && props.setShowToast && initialTime.current > 0 && (Number(hour) === 1 && Number(min) <= 39)){
+    if(!props.showToast && props.setShowToast && initialTime.current > 0 && (Number(hour) === 1 && Number(min) <= 31)){
       props.notify();
       props.setShowToast(true);
     }

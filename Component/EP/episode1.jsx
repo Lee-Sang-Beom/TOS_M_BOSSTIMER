@@ -24,12 +24,6 @@ export default function Ep01() {
     // episode1의 collection Name
     const q = query(collection(dbService, "episode1"));
     
-    const notify = () => {
-        toast(`에피소드 1의 임박한 필드 이벤트가 있어요!`, { limit:1 });
-    }
-
-
-
     // 설정된 다음 시간을 받아오는 부분
     async function getNextApperanceTime() {
         try {
@@ -103,6 +97,10 @@ export default function Ep01() {
 
     const EpContent = ({ id, areaName, bossName, time }) => {
 
+        const notify = () => {
+            toast(`에피소드 1의 임박한 필드 이벤트가 있어요!`, { limit:1 });
+        }
+    
         // 데이터베이스의 값 설정
         function setDBTime(newData, id) {
             return setDoc(doc(dbService, `episode1`, `episode1_${id}`), newData, {
@@ -152,7 +150,7 @@ export default function Ep01() {
                             <button className = "inline-flex text-white bg-indigo-500 border-0 py-1 px-4 focus:outline-none hover:bg-indigo-600 rounded" onClick={setNextApperanceTime}>
                                 갱신하기 
                             </button>         
-                            <Timer year={nextYear[id-1]} month={nextMonth[id-1]} day={nextDay[id-1]} hour={nextHour[id-1]} min={nextMinute[id-1]} sec={nextSecond[id-1]} name={bossName} showToast={showToast} setShowToast={setShowToast} notify={notify} />
+                            <Timer year={nextYear[id-1]} month={nextMonth[id-1]} day={nextDay[id-1]} hour={nextHour[id-1]} min={nextMinute[id-1]} sec={nextSecond[id-1]} idx={id-1} name={bossName} showToast={showToast} setShowToast={setShowToast} notify={notify} />
                         </div>
                     </div>
                 </div>
