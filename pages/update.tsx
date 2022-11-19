@@ -27,6 +27,21 @@ export default function Update() {
         <div className="px-5 py-24 mx-auto flex flex-wrap items-center justify-center">
           <div className="-my-8 divide-y-2 divide-gray-100">
 
+            {/* v1.2.1 업데이트 내용 */}
+            <UpdateSection version="UPDATE v1.2.1" date="2022-11-19">
+              <div>
+                <h2 className="text-xl font-medium text-gray-900 title-font mb-2">
+                  {`메인 화면 변경 및 회원가입 과정의 비밀번호 문제 안내 추가`}
+                </h2>
+                <p className="leading-relaxed text-sm mb-1">
+                  - <span className="font-bold">메인 화면</span>을 좀 더 심미성 있게 변경하였습니다.
+                </p>
+                <p className="leading-relaxed text-sm mb-1">
+                  {`- 회원가입 과정에서 비밀번호 입력을 6글자 미만으로 수행하는 경우, 알 수 없는 오류 문구라고 출력하는 대신, 비밀번호 길이를 6글자 이상 입력해달라고 요청하는 문구를 출력할 수 있도록 하였습니다.`}
+                </p>
+              </div>
+            </UpdateSection>
+
             {/* v1.2.0 업데이트 내용 */}
             <UpdateSection version="UPDATE v1.2.0" date="2022-11-19">
               <div>
@@ -79,7 +94,7 @@ export default function Update() {
             <UpdateSection version="UPDATE v1.0.0" date="2022-11-18">
               <div>
                 <h2 className="text-xl font-medium text-gray-900 title-font mb-2">
-                  타이머 서비스 시작
+                  {`타이머 서비스 시작`}
                 </h2>
                 <p className="leading-relaxed text-sm mb-1">
                   - <span className="font-bold">{`에피소드 01 ~ 08`}</span>
