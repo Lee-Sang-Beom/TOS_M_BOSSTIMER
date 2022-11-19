@@ -14,7 +14,6 @@ export const ep01BossListAtom = atom({
       bossName: '강인한 스펙터 군주',
       time: '2'
     }
-
   ]
 });
 
@@ -184,7 +183,6 @@ export const ep07BossListAtom= atom({
     }
   ]
 });
-
 
 export const ep08BossListAtom= atom({
   key: "ep08BossListAtom", // unique ID

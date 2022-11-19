@@ -1,3 +1,4 @@
+import { ToastContainer } from "react-toastify"
 import Ep01 from "./EP/episode1"
 import Ep02 from "./EP/episode2"
 import Ep03 from "./EP/episode3"
@@ -14,7 +15,8 @@ export default function EpisodeSection() {
     return (
         <section className="text-gray-600 body-font">
             <div className="px-5 py-24 mx-auto">
-                <div className = "text-red-600 font-bold flex justify-center">2022-11-18 23:30 기준 새로운 Update 내용이 있습니다. 상단의 Update 버튼을 눌러 확인해보세요!.</div>
+                <div className = "text-red-600 font-bold flex justify-center">{`테러는 하지말아주세요 ㅠ_ㅠ 사람도 없는 서버인데 서로 도우면서 살아요..!`}</div>
+                <ToastContainer />
                 <Ep01/>
                 <Ep02/>
                 <Ep03/>

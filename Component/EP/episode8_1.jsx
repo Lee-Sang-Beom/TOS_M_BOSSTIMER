@@ -220,6 +220,7 @@ export default function Ep08_Ch1() {
                 hour={nextHour[id - 1]}
                 min={nextMinute[id - 1]}
                 sec={nextSecond[id - 1]}
+                name={bossName}
               />
             </div>
           </div>

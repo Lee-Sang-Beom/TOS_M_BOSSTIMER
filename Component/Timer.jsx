@@ -1,7 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Label } from "semantic-ui-react";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 const padNumber = (num, length) => {
   return String(num).padStart(length, "0");
@@ -18,9 +16,7 @@ const handleTimeDifference = (year, month, day, hour, min, sec) => {
 
     return [diffSec, diffMin, diffHour];
   }
-
 }
-
 
 const Timer = (props) => {
   let diffSec;
@@ -55,16 +51,6 @@ const Timer = (props) => {
   // 만약 timer가 종료되면, true로 변경되며 사용자들에게 갱신의 필요성을 알림.
   const [showWaring, setShowWarning] = useState(false);
 
-  // 1회 알림 출력 후에는, 연속으로 출력하지 못하도록 상태를 관리한다.
-  
-  const [showToast, setShowToast] = useState(true);
-
-  // 타이머 종료 시, 어떤 보스인지 출력하기 위한 함수
-  const notify = (text) => {
-    toast(text);
-    setShowToast(false);
-  };
-
   // 타이머를 초단위로 변환한 initialTime과 setInterval을 저장할 interval ref
   let initialTime = useRef(tempHour * 60 * 60 + tempMin * 60 + tempSec);
   const interval = useRef(0);
@@ -97,15 +83,17 @@ const Timer = (props) => {
       clearInterval(interval.current);
     }
 
-    // if((Number(hour)===0 && Number(min) <= 5) && showToast && initialTime.current > 0) {
-    //   notify(`필드보스 ${props.name}의 필드 이벤트가 얼마 남지 않았습니다!`);
-    // }
 
+    if(!props.showToast && props.setShowToast && initialTime.current > 0 && (Number(hour) === 1 && Number(min) <= 39)){
+      props.notify();
+      props.setShowToast(true);
+    }
   }, [sec]);
+
+
 
   return (
     <>
-      <ToastContainer />
       <div className="border border-gray-200 mt-2 p-3 rounded-lg">
         <div className="w-full p-4 flex flex-col items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-2">
           <p className="text-sm text-indigo-800">{`남은 시간`}</p>

@@ -5,7 +5,8 @@ import { dbService } from "../../firebaseConfig.js"
 import Timer from "../Timer.jsx"
 import { ep01BossListAtom } from "../../src/index"
 import { useRecoilState } from "recoil";
-
+import { toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
 
 export default function Ep01() {
 
@@ -18,8 +19,16 @@ export default function Ep01() {
     const [nextSecond, setNextSecond] = useState([]);
     const [bossData, setBossData] = useRecoilState(ep01BossListAtom);
 
+    const [showToast, setShowToast] = useState(false);
+
     // episode1의 collection Name
     const q = query(collection(dbService, "episode1"));
+    
+    const notify = () => {
+        toast(`에피소드 1의 임박한 필드 이벤트가 있어요!`, { limit:1 });
+    }
+
+
 
     // 설정된 다음 시간을 받아오는 부분
     async function getNextApperanceTime() {
@@ -44,7 +53,6 @@ export default function Ep01() {
             setNextHour(nextHourList);
             setNextMinute(nextMinuteList);
             setNextSecond(nextSecondList);
-
         } catch (error) {
             alert(new Error(error));
         }
@@ -99,7 +107,7 @@ export default function Ep01() {
         function setDBTime(newData, id) {
             return setDoc(doc(dbService, `episode1`, `episode1_${id}`), newData, {
                 merge: true,
-            });
+            }).then((setShowToast(false)));
         }
 
         // 다음 시간 설정
@@ -128,6 +136,7 @@ export default function Ep01() {
             }, id);
         }
 
+
         return (
             <div className="p-4 md:w-1/2 w-full">
                 <div className="h-full flex items-center border-gray-200 border p-4 rounded-lg">
@@ -143,7 +152,7 @@ export default function Ep01() {
                             <button className = "inline-flex text-white bg-indigo-500 border-0 py-1 px-4 focus:outline-none hover:bg-indigo-600 rounded" onClick={setNextApperanceTime}>
                                 갱신하기 
                             </button>         
-                            <Timer year={nextYear[id-1]} month={nextMonth[id-1]} day={nextDay[id-1]} hour={nextHour[id-1]} min={nextMinute[id-1]} sec={nextSecond[id-1]} name={bossName} />
+                            <Timer year={nextYear[id-1]} month={nextMonth[id-1]} day={nextDay[id-1]} hour={nextHour[id-1]} min={nextMinute[id-1]} sec={nextSecond[id-1]} name={bossName} showToast={showToast} setShowToast={setShowToast} notify={notify} />
                         </div>
                     </div>
                 </div>
