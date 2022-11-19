@@ -137,7 +137,7 @@ export default function Ep07_Ch1() {
     const EpContent = ({ id, areaName, bossName, time }) => {
 
         function notify () {
-            toast(`에피소드 7(채널 1)의 ${bossName}의 필드 이벤트가 5분 남았어요!`, { limit:1, autoClose:300000, pauseOnFocusLoss:false });
+            toast(`에피소드 7(채널 1)의 ${bossName}의 필드 이벤트가 10분 남았어요!`, { limit:1, autoClose:600000, pauseOnFocusLoss:false });
         }
 
         // 데이터베이스의 값 설정
