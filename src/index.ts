@@ -137,7 +137,7 @@ export const ep06BossListAtom= atom({
     },{
       id : 2,
       area: '봄볕나무 숲',
-      bossName: '강인한 네펜더스',
+      bossName: '비겁한 맨티켄',
       time: '2'
     },{
       id : 3,
