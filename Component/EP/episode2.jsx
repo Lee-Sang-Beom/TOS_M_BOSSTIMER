@@ -5,7 +5,8 @@ import { dbService } from "../../firebaseConfig.js"
 import Timer from "../Timer.jsx"
 import { ep02BossListAtom } from "../../src/index"
 import { useRecoilState } from "recoil";
-
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Ep02() {
 
@@ -139,6 +140,10 @@ export default function Ep02() {
 
     const EpContent = ({ id, areaName, bossName, time }) => {
 
+        function notify () {
+            toast(`에피소드 2의 ${bossName}의 필드 이벤트가 5분 남았어요!`, { limit:1, autoClose:300000, pauseOnFocusLoss:false});
+        }
+
         // 데이터베이스의 값 설정
         function setDBTime(newData, id) {
             return setDoc(doc(dbService, `episode2`, `episode2_${id}`), newData, {
@@ -187,7 +192,7 @@ export default function Ep02() {
                             <button className = "inline-flex text-white bg-indigo-500 border-0 py-1 px-4 focus:outline-none hover:bg-indigo-600 rounded" onClick={setNextApperanceTime}>
                                 갱신하기 
                             </button>         
-                            <Timer year={nextYear[id-1]} month={nextMonth[id-1]} day={nextDay[id-1]} hour={nextHour[id-1]} min={nextMinute[id-1]} sec={nextSecond[id-1]} name={bossName} />
+                            <Timer year={nextYear[id-1]} month={nextMonth[id-1]} day={nextDay[id-1]} hour={nextHour[id-1]} min={nextMinute[id-1]} sec={nextSecond[id-1]} notify={notify} />
                         </div>
                     </div>
                 </div>

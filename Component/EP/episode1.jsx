@@ -6,7 +6,7 @@ import Timer from "../Timer.jsx"
 import { ep01BossListAtom } from "../../src/index"
 import { useRecoilState } from "recoil";
 import { toast } from 'react-toastify';
-  import 'react-toastify/dist/ReactToastify.css';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Ep01() {
 
@@ -18,8 +18,6 @@ export default function Ep01() {
     const [nextMinute, setNextMinute] = useState([]);
     const [nextSecond, setNextSecond] = useState([]);
     const [bossData, setBossData] = useRecoilState(ep01BossListAtom);
-
-    const [showToast, setShowToast] = useState(false);
 
     // episode1의 collection Name
     const q = query(collection(dbService, "episode1"));
@@ -97,15 +95,15 @@ export default function Ep01() {
 
     const EpContent = ({ id, areaName, bossName, time }) => {
 
-        const notify = () => {
-            toast(`에피소드 1의 임박한 필드 이벤트가 있어요!`, { limit:1 });
+        function notify () {
+            toast(`에피소드 1의 ${bossName}의 필드 이벤트가 5분 남았어요!`, { limit:1, autoClose:300000, pauseOnFocusLoss:false });
         }
     
         // 데이터베이스의 값 설정
         function setDBTime(newData, id) {
             return setDoc(doc(dbService, `episode1`, `episode1_${id}`), newData, {
                 merge: true,
-            }).then((setShowToast(false)));
+            });
         }
 
         // 다음 시간 설정
@@ -150,7 +148,7 @@ export default function Ep01() {
                             <button className = "inline-flex text-white bg-indigo-500 border-0 py-1 px-4 focus:outline-none hover:bg-indigo-600 rounded" onClick={setNextApperanceTime}>
                                 갱신하기 
                             </button>         
-                            <Timer year={nextYear[id-1]} month={nextMonth[id-1]} day={nextDay[id-1]} hour={nextHour[id-1]} min={nextMinute[id-1]} sec={nextSecond[id-1]} idx={id-1} name={bossName} showToast={showToast} setShowToast={setShowToast} notify={notify} />
+                            <Timer year={nextYear[id-1]} month={nextMonth[id-1]} day={nextDay[id-1]} hour={nextHour[id-1]} min={nextMinute[id-1]} sec={nextSecond[id-1]} notify={notify} />
                         </div>
                     </div>
                 </div>

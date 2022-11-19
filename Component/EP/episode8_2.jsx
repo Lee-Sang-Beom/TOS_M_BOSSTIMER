@@ -12,6 +12,8 @@ import { dbService } from "../../firebaseConfig.js";
 import Timer from "../Timer.jsx";
 import { ep08BossListAtom } from "../../src/index";
 import { useRecoilState } from "recoil";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Ep08_Ch2() {
   // 화면에 표시할 시간 설정
@@ -152,6 +154,11 @@ export default function Ep08_Ch2() {
   }, []);
 
   const EpContent = ({ id, areaName, bossName, time }) => {
+
+    function notify () {
+      toast(`에피소드 8(채널 2)의 ${bossName}의 필드 이벤트가 5분 남았어요!`, { limit:1, autoClose:300000, pauseOnFocusLoss:false });
+  }
+
     // 데이터베이스의 값 설정
     function setDBTime(newData, id) {
       return setDoc(doc(dbService, `episode8_2ch`, `episode8_${id}`), newData, {
@@ -220,7 +227,7 @@ export default function Ep08_Ch2() {
                 hour={nextHour[id - 1]}
                 min={nextMinute[id - 1]}
                 sec={nextSecond[id - 1]}
-                name={bossName}
+                notify={notify}
               />
             </div>
           </div>

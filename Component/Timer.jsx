@@ -18,6 +18,7 @@ const handleTimeDifference = (year, month, day, hour, min, sec) => {
   }
 }
 
+
 const Timer = (props) => {
   let diffSec;
   let diffMin;
@@ -81,15 +82,15 @@ const Timer = (props) => {
 
       // 종료조건 : 타이머 종료
       clearInterval(interval.current);
+    } else {
+
+      // 전달된 함수가 존재하고, 타이머가 5분 남았을 때 알림
+      if(props.notify && !Number(hour) && Number(min) === 5 && !Number(sec)){
+        props.notify();
+      }
     }
 
-
-    if(!props.showToast && props.setShowToast && initialTime.current > 0 && (Number(hour) === 1 && Number(min) <= 31)){
-      props.notify();
-      props.setShowToast(true);
-    }
   }, [sec]);
-
 
 
   return (
