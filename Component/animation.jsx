@@ -10,6 +10,7 @@ export default function Aniamtion() {
       animationData={lottieJson}
       play
       style={{ width: 300, height: 300 }}
+      className="animate__animated animate__bounce"
     />
   )
 }
