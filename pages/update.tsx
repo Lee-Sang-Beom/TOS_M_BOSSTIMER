@@ -27,6 +27,20 @@ export default function Update() {
         <div className="px-5 py-24 mx-auto flex flex-wrap items-center justify-center">
           <div className="-my-8 divide-y-2 divide-gray-100">
 
+            {/* v1.2.2 업데이트 내용 */}
+            <UpdateSection version="UPDATE v1.2.1" date="2022-11-20">
+              <div>
+                <h2 className="text-xl font-medium text-gray-900 title-font mb-2">
+                  {`에피소드 06 채널 2 추가`}
+                </h2>
+                <p className="leading-relaxed text-sm mb-1">
+                  - <span className="font-bold">{`에피소드 06 2개 채널(1,2)`}</span>
+                  에 대한 필드 보스의 리젠 시간을 확인할 수 있습니다.
+                </p>
+
+              </div>
+            </UpdateSection>
+
             {/* v1.2.1 업데이트 내용 */}
             <UpdateSection version="UPDATE v1.2.1" date="2022-11-19">
               <div>
