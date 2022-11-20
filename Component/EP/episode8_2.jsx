@@ -25,21 +25,18 @@ export default function Ep08_Ch2() {
   const [nextSecond, setNextSecond] = useState([]);
   const [bossData, setBossData] = useRecoilState(ep08BossListAtom);
 
-  // episode1의 collection Name
+  // episode8_ch2의 collection Name
   const q = query(collection(dbService, "episode8_2ch"));
 
   // 설정된 다음 시간을 받아오는 부분
   async function getNextApperanceTime() {
     try {
-      // 1번째 보스 ch01, ch02
       const docSnap1 = await getDoc(doc(dbService, "episode8_2ch", "episode8_1"));
       const docSnap2 = await getDoc(doc(dbService, "episode8_2ch", "episode8_2"));
 
-      // 2번째 보스 ch01, ch02
       const docSnap3 = await getDoc(doc(dbService, "episode8_2ch", "episode8_3"));
       const docSnap4 = await getDoc(doc(dbService, "episode8_2ch", "episode8_4"));
 
-      // 3번째 보스 ch01, ch02
       const docSnap5 = await getDoc(doc(dbService, "episode8_2ch", "episode8_5"));
       const docSnap6 = await getDoc(doc(dbService, "episode8_2ch", "episode8_6"));
 

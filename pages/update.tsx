@@ -28,7 +28,7 @@ export default function Update() {
           <div className="-my-8 divide-y-2 divide-gray-100">
 
             {/* v1.2.2 업데이트 내용 */}
-            <UpdateSection version="UPDATE v1.2.1" date="2022-11-20">
+            <UpdateSection version="UPDATE v1.2.2" date="2022-11-20">
               <div>
                 <h2 className="text-xl font-medium text-gray-900 title-font mb-2">
                   {`에피소드 06 채널 2 추가`}

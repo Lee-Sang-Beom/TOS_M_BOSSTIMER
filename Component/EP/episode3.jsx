@@ -19,7 +19,7 @@ export default function Ep03() {
     const [nextSecond, setNextSecond] = useState([]);
     const [bossData, setBossData] = useRecoilState(ep03BossListAtom);
 
-    // episode1의 collection Name
+    // episode3의 collection Name
     const q = query(collection(dbService, "episode3"));
 
     // 설정된 다음 시간을 받아오는 부분
