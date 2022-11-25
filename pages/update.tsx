@@ -27,6 +27,18 @@ export default function Update() {
         <div className="px-5 py-24 mx-auto flex flex-wrap items-center justify-center">
           <div className="-my-8 divide-y-2 divide-gray-100">
 
+            {/* v1.2.3 업데이트 내용 */}
+            <UpdateSection version="UPDATE v1.2.3" date="2022-11-25">
+              <div>
+                <h2 className="text-xl font-medium text-gray-900 title-font mb-2">
+                  타이머 알림 시간 변경
+                </h2>
+                <p className="leading-relaxed text-sm mb-1">
+                  - 모든 필드의 보스 이벤트마다 타이머의 남은 시간에 따라 알림이 발생하던 기능의 기준 시간을 <span className="font-bold">10분에서 5분으로</span> 변경하였습니다.
+                </p>
+              </div>
+            </UpdateSection>
+
             {/* v1.2.2 업데이트 내용 */}
             <UpdateSection version="UPDATE v1.2.2" date="2022-11-20">
               <div>
