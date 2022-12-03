@@ -16,6 +16,10 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 export default function Ep08_Ch2() {
+  // 남은시간 설정을 위한 state 데이터
+  const [hour, setHour] = useState([0, 0, 0, 0, 0, 0]);
+  const [min, setMin] = useState([0, 0, 0, 0, 0, 0]);
+
   // 화면에 표시할 시간 설정
   const [nextYear, setNextYear] = useState([]);
   const [nextMonth, setNextMonth] = useState([]);
@@ -185,7 +189,8 @@ export default function Ep08_Ch2() {
       let date = new Date();
 
       // 보스 대기시간인 time만큼 시간 추가
-      date.setHours(date.getHours() + Number(time));
+      date.setHours(date.getHours() + Number(hour[id - 1]));
+      date.setMinutes(date.getMinutes() + Number(min[id - 1]));
 
       // time만큼 시간을 추가했을 때의 문자열 반환
       const nextDBYear = String(date.getFullYear());
@@ -209,6 +214,26 @@ export default function Ep08_Ch2() {
       );
     }
 
+    function changeHour(e) {
+      const newState = hour.map((item, idx) => {
+        if (idx === id - 1) {
+          return e.target.value;
+        } else {
+          return item;
+        }
+      });
+      setHour(newState);
+    }
+    function changeMin(e) {
+      const newState = min.map((item, idx) => {
+        if (idx === id - 1) {
+          return e.target.value;
+        } else {
+          return item;
+        }
+      });
+      setMin(newState);
+    }
     return (
       <div className="p-4 md:w-1/2 w-full">
         <div className="h-full flex items-center border-gray-200 border p-4 rounded-lg">
