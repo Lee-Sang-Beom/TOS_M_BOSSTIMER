@@ -6,7 +6,7 @@ import {
   query,
   setDoc,
 } from "firebase/firestore";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { Form, Icon, Segment } from "semantic-ui-react";
 import { dbService } from "../../firebaseConfig.js";
 import Timer from "../Timer.jsx";
@@ -19,6 +19,7 @@ export default function Ep01() {
   // 남은시간 설정을 위한 state 데이터
   const [hour, setHour] = useState([0, 0]);
   const [min, setMin] = useState([0, 0]);
+
 
   // 화면에 표시할 시간 설정
   const [nextYear, setNextYear] = useState([]);
@@ -97,6 +98,10 @@ export default function Ep01() {
   }, []);
 
   const EpContent = ({ id, areaName, bossName, time }) => {
+    
+    const [hourData, setHourData] = useState(0);
+    const [minData, setMinData] = useState(0);
+
     function notify() {
       toast(`에피소드 1의 ${bossName}의 필드 이벤트가 5분 남았어요!`, {
         limit: 1,
@@ -114,11 +119,14 @@ export default function Ep01() {
 
     // 다음 시간 설정
     function setNextApperanceTime(e) {
+      const hourList = changeHour();
+      const minList = changeMin();
+
       let date = new Date();
 
       // 보스 대기시간인 time만큼 시간 추가
-      date.setHours(date.getHours() + Number(hour[id - 1]));
-      date.setMinutes(date.getMinutes() + Number(min[id - 1]));
+      date.setHours(date.getHours() + Number(hourList[id - 1]));
+      date.setMinutes(date.getMinutes() + Number(minList[id - 1]));
 
       // time만큼 시간을 추가했을 때의 문자열 반환
       const nextDBYear = String(date.getFullYear());
@@ -142,25 +150,27 @@ export default function Ep01() {
       );
     }
 
-    function changeHour(e) {
+    function changeHour() {
       const newState = hour.map((item, idx) => {
         if (idx === id - 1) {
-          return e.target.value;
+          return hourData;
         } else {
           return item;
         }
       });
       setHour(newState);
+      return newState;
     }
-    function changeMin(e) {
+    function changeMin() {
       const newState = min.map((item, idx) => {
         if (idx === id - 1) {
-          return e.target.value;
+          return minData;
         } else {
           return item;
         }
       });
       setMin(newState);
+      return newState;
     }
 
     return (
@@ -179,37 +189,37 @@ export default function Ep01() {
                   nextMinute[id - 1]
                 }분`}</p>
               </div>
+              
               <Form>
                 <Form.Field>
                   <div className="relative mb-4">
-                    <Icon name="mail" />
                     <label className="leading-7 text-sm text-gray-600 mail">
                       Hour
                     </label>
                     <input
                       type="number"
-                      value={hour[id - 1]}
-                      onChange={changeHour}
+                      value={hourData}
+                      onChange={(e)=>setHourData(e.target.value)}
                       className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                     />
                   </div>
                 </Form.Field>
                 <Form.Field>
                   <div className="relative mb-4">
-                    <Icon name="user secret" />
                     <label className="leading-7 text-sm text-gray-600">
                       Minute
                     </label>
                     <input
                       type="number"
                       autoComplete="off"
-                      value={min[id - 1]}
-                      onChange={changeMin}
+                      value={minData}
+                      onChange={(e)=>setMinData(e.target.value)}
                       className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                     />
                   </div>
                 </Form.Field>
               </Form>
+
               <button
                 className="inline-flex text-white bg-indigo-500 border-0 py-1 px-4 focus:outline-none hover:bg-indigo-600 rounded"
                 onClick={setNextApperanceTime}
