@@ -7,18 +7,18 @@ import {
   setDoc,
 } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
-import { Button, Dimmer, Form, Icon, Modal, Segment } from "semantic-ui-react";
+import { Form, Icon, Segment } from "semantic-ui-react";
 import { dbService } from "../../firebaseConfig.js";
 import Timer from "../Timer.jsx";
-import { ep08BossListAtom } from "../../src/index";
+import { ep09BossListAtom } from "../../src/index";
 import { useRecoilState } from "recoil";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-export default function Ep08_Ch2() {
+export default function Ep09_Ch2() {
   // 남은시간 설정을 위한 state 데이터
-  const [hour, setHour] = useState([0, 0, 0, 0, 0, 0]);
-  const [min, setMin] = useState([0, 0, 0, 0, 0, 0]);
+  const [hour, setHour] = useState([0, 0, 0, 0, 0]);
+  const [min, setMin] = useState([0, 0, 0, 0, 0]);
 
   // 화면에 표시할 시간 설정
   const [nextYear, setNextYear] = useState([]);
@@ -27,41 +27,25 @@ export default function Ep08_Ch2() {
   const [nextHour, setNextHour] = useState([]);
   const [nextMinute, setNextMinute] = useState([]);
   const [nextSecond, setNextSecond] = useState([]);
-  const [bossData, setBossData] = useRecoilState(ep08BossListAtom);
+  const [bossData, setBossData] = useRecoilState(ep09BossListAtom);
 
-  // episode8_ch2의 collection Name
-  const q = query(collection(dbService, "episode8_2ch"));
+  // episode6_ch1의 collection Name
+  const q = query(collection(dbService, "episode9_2ch"));
 
   // 설정된 다음 시간을 받아오는 부분
   async function getNextApperanceTime() {
     try {
-      const docSnap1 = await getDoc(
-        doc(dbService, "episode8_2ch", "episode8_1")
-      );
-      const docSnap2 = await getDoc(
-        doc(dbService, "episode8_2ch", "episode8_2")
-      );
-
-      const docSnap3 = await getDoc(
-        doc(dbService, "episode8_2ch", "episode8_3")
-      );
-      const docSnap4 = await getDoc(
-        doc(dbService, "episode8_2ch", "episode8_4")
-      );
-
-      const docSnap5 = await getDoc(
-        doc(dbService, "episode8_2ch", "episode8_5")
-      );
-      const docSnap6 = await getDoc(
-        doc(dbService, "episode8_2ch", "episode8_6")
-      );
+      const docSnap1 = await getDoc(doc(dbService, "episode9_2ch", "episode9_1"));
+      const docSnap2 = await getDoc(doc(dbService, "episode9_2ch", "episode9_2"));
+      const docSnap3 = await getDoc(doc(dbService, "episode9_2ch", "episode9_3"));
+      const docSnap4 = await getDoc(doc(dbService, "episode9_2ch", "episode9_4"));
+      const docSnap5 = await getDoc(doc(dbService, "episode9_2ch", "episode9_5"));
 
       const timeField1 = docSnap1.data();
       const timeField2 = docSnap2.data();
       const timeField3 = docSnap3.data();
       const timeField4 = docSnap4.data();
       const timeField5 = docSnap5.data();
-      const timeField6 = docSnap6.data();
 
       // 차후 push 사용으로 코드 간소화
       const nextYearList = [
@@ -70,7 +54,6 @@ export default function Ep08_Ch2() {
         timeField3.nextYear,
         timeField4.nextYear,
         timeField5.nextYear,
-        timeField6.nextYear,
       ];
 
       const nextMonthList = [
@@ -79,7 +62,6 @@ export default function Ep08_Ch2() {
         timeField3.nextMonth,
         timeField4.nextMonth,
         timeField5.nextMonth,
-        timeField6.nextMonth,
       ];
 
       const nextDayList = [
@@ -88,34 +70,27 @@ export default function Ep08_Ch2() {
         timeField3.nextDay,
         timeField4.nextDay,
         timeField5.nextDay,
-        timeField6.nextDay,
       ];
-
       const nextHourList = [
         timeField1.nextHour,
         timeField2.nextHour,
         timeField3.nextHour,
         timeField4.nextHour,
         timeField5.nextHour,
-        timeField6.nextHour,
       ];
-
       const nextMinuteList = [
         timeField1.nextMinute,
         timeField2.nextMinute,
         timeField3.nextMinute,
         timeField4.nextMinute,
         timeField5.nextMinute,
-        timeField6.nextMinute,
       ];
-
       const nextSecondList = [
         timeField1.nextSecond,
         timeField2.nextSecond,
         timeField3.nextSecond,
         timeField4.nextSecond,
         timeField5.nextSecond,
-        timeField6.nextSecond,
       ];
 
       setNextYear(nextYearList);
@@ -167,12 +142,12 @@ export default function Ep08_Ch2() {
   }, []);
 
   const EpContent = ({ id, areaName, bossName }) => {
-    
+
     const [hourData, setHourData] = useState(0);
     const [minData, setMinData] = useState(0);
 
     function notify() {
-      toast(`에피소드 8(채널 2)의 ${bossName}의 필드 이벤트가 5분 남았어요!`, {
+      toast(`에피소드 9(채널 2)의 ${bossName}의 필드 이벤트가 5분 남았어요!`, {
         limit: 1,
         autoClose: 300000,
         pauseOnFocusLoss: false,
@@ -181,14 +156,12 @@ export default function Ep08_Ch2() {
 
     // 데이터베이스의 값 설정
     function setDBTime(newData, id) {
-      return setDoc(doc(dbService, `episode8_2ch`, `episode8_${id}`), newData, {
+      return setDoc(doc(dbService, `episode9_2ch`, `episode9_${id}`), newData, {
         merge: true,
-      }).then(() => {
-        getNextApperanceTime();
       });
     }
 
-    // 다음 시간 설정
+// 다음 시간 설정
     function setNextApperanceTime(e) {
       const hourList = changeHour();
       const minList = changeMin();
@@ -260,7 +233,7 @@ export default function Ep08_Ch2() {
                   nextMinute[id - 1]
                 }분`}</p>
               </div>
-              <Form>
+                            <Form>
                 <Form.Field>
                   <div className="relative mb-4">
                     <label className="leading-7 text-sm text-gray-600 mail">
@@ -269,7 +242,7 @@ export default function Ep08_Ch2() {
                     <input
                       type="number"
                       value={hourData}
-                      onChange={(e) => setHourData(e.target.value)}
+                      onChange={(e)=>setHourData(e.target.value)}
                       className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                     />
                   </div>
@@ -283,19 +256,18 @@ export default function Ep08_Ch2() {
                       type="number"
                       autoComplete="off"
                       value={minData}
-                      onChange={(e) => setMinData(e.target.value)}
+                      onChange={(e)=>setMinData(e.target.value)}
                       className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                     />
                   </div>
                 </Form.Field>
               </Form>
               <button
-                className="inline-flex text-white bg-indigo-500 border-0 py-1 px-4 focus:outline-none hover:bg-indigo-600 rounded "
+                className="inline-flex text-white bg-indigo-500 border-0 py-1 px-4 focus:outline-none hover:bg-indigo-600 rounded"
                 onClick={setNextApperanceTime}
               >
                 갱신하기
               </button>
-
               <Timer
                 year={nextYear[id - 1]}
                 month={nextMonth[id - 1]}
@@ -316,12 +288,8 @@ export default function Ep08_Ch2() {
     <section className="text-gray-600 body-font">
       <div className="px-5 py-24 mx-auto text-center">
         <div className="flex flex-col text-center w-full mb-20">
-          <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">
-            {`EP08(채널 2)`}
-          </h1>
-          <p className="lg:w-1/2 mx-auto leading-relaxed text-base">
-            {`에피소드8 (채널 2)의 필드보스 타이머입니다.`}
-          </p>
+          <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">{`EP09(채널 2)`}</h1>
+          <p className="lg:w-1/3 mx-auto leading-relaxed text-base">{`에피소드9 (채널 2)의 필드보스 타이머입니다.`}</p>
         </div>
         <Segment>
           <div className="flex flex-wrap -m-2">

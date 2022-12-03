@@ -31,10 +31,14 @@ export default function Update() {
             <UpdateSection version="UPDATE v1.3.0" date="2022-12-03">
               <div>
                 <h2 className="text-xl font-medium text-gray-900 title-font mb-2">
-                  필드 보스 시간 초기화 방법 변경
+                {`에피소드 09 추가 및 필드 보스 시간 초기화 방법 변경`}
                 </h2>
                 <p className="leading-relaxed text-sm mb-1">
-                  - 리젠 시간의 랜덤 변경으로, 사용자가 직접 남은 시간을 입력할 수 있도록 구성하였습니다.
+                  - 대형 업데이트에 따라, 이제 <span className="font-bold">{`에피소드 09 2개 채널(1,2)`}</span>
+                  에 대한 필드 보스의 리젠 시간을 확인할 수 있습니다.
+                </p>
+                <p className="leading-relaxed text-sm mb-1">
+                  - 보스 리젠 시간이 랜덤으로 변경됨에 따라, 사용자가 직접 남은 시간을 입력할 수 있도록 구성하였습니다.
                 </p>
               </div>
             </UpdateSection>

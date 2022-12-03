@@ -15,7 +15,7 @@ import { useRecoilState } from "recoil";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-export default function Ep07_Ch1() {
+export default function Ep07_Ch2() {
   // 남은시간 설정을 위한 state 데이터
   const [hour, setHour] = useState([0, 0, 0, 0]);
   const [min, setMin] = useState([0, 0, 0, 0]);
