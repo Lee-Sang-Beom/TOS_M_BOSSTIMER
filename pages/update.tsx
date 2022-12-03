@@ -27,6 +27,18 @@ export default function Update() {
         <div className="px-5 py-24 mx-auto flex flex-wrap items-center justify-center">
           <div className="-my-8 divide-y-2 divide-gray-100">
 
+            {/* v1.3.0 업데이트 내용 */}
+            <UpdateSection version="UPDATE v1.3.0" date="2022-12-03">
+              <div>
+                <h2 className="text-xl font-medium text-gray-900 title-font mb-2">
+                  필드 보스 시간 초기화 방법 변경
+                </h2>
+                <p className="leading-relaxed text-sm mb-1">
+                  - 리젠 시간의 랜덤 변경으로, 사용자가 직접 남은 시간을 입력할 수 있도록 구성하였습니다.
+                </p>
+              </div>
+            </UpdateSection>
+
             {/* v1.2.3 업데이트 내용 */}
             <UpdateSection version="UPDATE v1.2.3" date="2022-11-25">
               <div>

@@ -127,7 +127,7 @@ export default function Ep05() {
     });
   }, []);
 
-  const EpContent = ({ id, areaName, bossName, time }) => {
+  const EpContent = ({ id, areaName, bossName }) => {
     const [hourData, setHourData] = useState(0);
     const [minData, setMinData] = useState(0);
 
@@ -289,7 +289,6 @@ export default function Ep05() {
                     id={element.id}
                     areaName={element.area}
                     bossName={element.bossName}
-                    time={element.time}
                   />
                 </React.Fragment>
               );

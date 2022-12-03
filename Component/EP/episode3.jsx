@@ -133,8 +133,7 @@ export default function Ep03() {
     });
   }, []);
 
-  const EpContent = ({ id, areaName, bossName, time }) => {
-
+  const EpContent = ({ id, areaName, bossName }) => {
     const [hourData, setHourData] = useState(0);
     const [minData, setMinData] = useState(0);
 
@@ -155,59 +154,59 @@ export default function Ep03() {
 
     // 다음 시간 설정
     function setNextApperanceTime(e) {
-        const hourList = changeHour();
-        const minList = changeMin();
-  
-        let date = new Date();
-  
-        // 보스 대기시간인 time만큼 시간 추가
-        date.setHours(date.getHours() + Number(hourList[id - 1]));
-        date.setMinutes(date.getMinutes() + Number(minList[id - 1]));
-  
-        // time만큼 시간을 추가했을 때의 문자열 반환
-        const nextDBYear = String(date.getFullYear());
-        const nextDBMonth = String(date.getMonth() + 1).padStart(2, "0");
-        const nextDBDay = String(date.getDate()).padStart(2, "0");
-        const nextDBHour = String(date.getHours()).padStart(2, "0");
-        const nextDBMinute = String(date.getMinutes()).padStart(2, "0");
-        const nextDBSecond = String(date.getSeconds()).padStart(2, "0");
-  
-        // DB에 적용할 값 전달
-        setDBTime(
-          {
-            nextYear: nextDBYear,
-            nextMonth: nextDBMonth,
-            nextDay: nextDBDay,
-            nextHour: nextDBHour,
-            nextMinute: nextDBMinute,
-            nextSecond: nextDBSecond,
-          },
-          id
-        );
-      }
-  
-      function changeHour() {
-        const newState = hour.map((item, idx) => {
-          if (idx === id - 1) {
-            return hourData;
-          } else {
-            return item;
-          }
-        });
-        setHour(newState);
-        return newState;
-      }
-      function changeMin() {
-        const newState = min.map((item, idx) => {
-          if (idx === id - 1) {
-            return minData;
-          } else {
-            return item;
-          }
-        });
-        setMin(newState);
-        return newState;
-      }
+      const hourList = changeHour();
+      const minList = changeMin();
+
+      let date = new Date();
+
+      // 보스 대기시간인 time만큼 시간 추가
+      date.setHours(date.getHours() + Number(hourList[id - 1]));
+      date.setMinutes(date.getMinutes() + Number(minList[id - 1]));
+
+      // time만큼 시간을 추가했을 때의 문자열 반환
+      const nextDBYear = String(date.getFullYear());
+      const nextDBMonth = String(date.getMonth() + 1).padStart(2, "0");
+      const nextDBDay = String(date.getDate()).padStart(2, "0");
+      const nextDBHour = String(date.getHours()).padStart(2, "0");
+      const nextDBMinute = String(date.getMinutes()).padStart(2, "0");
+      const nextDBSecond = String(date.getSeconds()).padStart(2, "0");
+
+      // DB에 적용할 값 전달
+      setDBTime(
+        {
+          nextYear: nextDBYear,
+          nextMonth: nextDBMonth,
+          nextDay: nextDBDay,
+          nextHour: nextDBHour,
+          nextMinute: nextDBMinute,
+          nextSecond: nextDBSecond,
+        },
+        id
+      );
+    }
+
+    function changeHour() {
+      const newState = hour.map((item, idx) => {
+        if (idx === id - 1) {
+          return hourData;
+        } else {
+          return item;
+        }
+      });
+      setHour(newState);
+      return newState;
+    }
+    function changeMin() {
+      const newState = min.map((item, idx) => {
+        if (idx === id - 1) {
+          return minData;
+        } else {
+          return item;
+        }
+      });
+      setMin(newState);
+      return newState;
+    }
 
     return (
       <div className="p-4 md:w-1/2 w-full">
@@ -225,7 +224,7 @@ export default function Ep03() {
                   nextMinute[id - 1]
                 }분`}</p>
               </div>
-                            <Form>
+              <Form>
                 <Form.Field>
                   <div className="relative mb-4">
                     <label className="leading-7 text-sm text-gray-600 mail">
@@ -234,7 +233,7 @@ export default function Ep03() {
                     <input
                       type="number"
                       value={hourData}
-                      onChange={(e)=>setHourData(e.target.value)}
+                      onChange={(e) => setHourData(e.target.value)}
                       className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                     />
                   </div>
@@ -248,7 +247,7 @@ export default function Ep03() {
                       type="number"
                       autoComplete="off"
                       value={minData}
-                      onChange={(e)=>setMinData(e.target.value)}
+                      onChange={(e) => setMinData(e.target.value)}
                       className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                     />
                   </div>
@@ -296,7 +295,6 @@ export default function Ep03() {
                     id={element.id}
                     areaName={element.area}
                     bossName={element.bossName}
-                    time={element.time}
                   />
                 </React.Fragment>
               );

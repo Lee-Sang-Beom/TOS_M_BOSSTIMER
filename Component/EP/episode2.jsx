@@ -141,8 +141,7 @@ export default function Ep02() {
     });
   }, []);
 
-  const EpContent = ({ id, areaName, bossName, time }) => {
-
+  const EpContent = ({ id, areaName, bossName }) => {
     const [hourData, setHourData] = useState(0);
     const [minData, setMinData] = useState(0);
 
@@ -161,7 +160,7 @@ export default function Ep02() {
       });
     }
 
- // 다음 시간 설정
+    // 다음 시간 설정
     function setNextApperanceTime(e) {
       const hourList = changeHour();
       const minList = changeMin();
@@ -233,7 +232,7 @@ export default function Ep02() {
                   nextMinute[id - 1]
                 }분`}</p>
               </div>
-                            <Form>
+              <Form>
                 <Form.Field>
                   <div className="relative mb-4">
                     <label className="leading-7 text-sm text-gray-600 mail">
@@ -242,7 +241,7 @@ export default function Ep02() {
                     <input
                       type="number"
                       value={hourData}
-                      onChange={(e)=>setHourData(e.target.value)}
+                      onChange={(e) => setHourData(e.target.value)}
                       className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                     />
                   </div>
@@ -256,7 +255,7 @@ export default function Ep02() {
                       type="number"
                       autoComplete="off"
                       value={minData}
-                      onChange={(e)=>setMinData(e.target.value)}
+                      onChange={(e) => setMinData(e.target.value)}
                       className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                     />
                   </div>
@@ -305,7 +304,6 @@ export default function Ep02() {
                     id={element.id}
                     areaName={element.area}
                     bossName={element.bossName}
-                    time={element.time}
                   />
                 </React.Fragment>
               );

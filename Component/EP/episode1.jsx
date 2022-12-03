@@ -97,7 +97,7 @@ export default function Ep01() {
     });
   }, []);
 
-  const EpContent = ({ id, areaName, bossName, time }) => {
+  const EpContent = ({ id, areaName, bossName }) => {
     
     const [hourData, setHourData] = useState(0);
     const [minData, setMinData] = useState(0);
