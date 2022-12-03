@@ -1,6 +1,6 @@
 import { collection, doc, getDoc, onSnapshot, query, setDoc } from "firebase/firestore"
 import React, { useEffect, useState } from "react"
-import { Segment } from "semantic-ui-react"
+import { Form, Icon, Segment } from "semantic-ui-react"
 import { dbService } from "../../firebaseConfig.js"
 import Timer from "../Timer.jsx"
 import { ep02BossListAtom } from "../../src/index"
@@ -191,7 +191,32 @@ export default function Ep02() {
                             </div>
                             <button className = "inline-flex text-white bg-indigo-500 border-0 py-1 px-4 focus:outline-none hover:bg-indigo-600 rounded" onClick={setNextApperanceTime}>
                                 갱신하기 
-                            </button>         
+                            </button>  
+                            <Form>
+                                <Form.Field>
+                                    <div className="relative mb-4">
+                                        <Icon name="mail"/>
+                                        <label className="leading-7 text-sm text-gray-600 mail">Hour</label>
+                                        <input
+                                            type="number"
+                                            value={hour[id-1]}
+                                            onChange={changeHour}
+                                            className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                    </div>
+                                </Form.Field>
+                                <Form.Field>
+                                    <div className="relative mb-4">
+                                    <Icon name="user secret"/>
+                                        <label className="leading-7 text-sm text-gray-600">Minute</label>
+                                        <input
+                                            type="number"
+                                            autoComplete="off"
+                                            value={min[id-1]}
+                                            onChange={changeMin}
+                                            className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                                    </div>
+                                </Form.Field>
+                            </Form>      
                             <Timer year={nextYear[id-1]} month={nextMonth[id-1]} day={nextDay[id-1]} hour={nextHour[id-1]} min={nextMinute[id-1]} sec={nextSecond[id-1]} notify={notify} />
                         </div>
                     </div>

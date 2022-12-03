@@ -7,13 +7,13 @@ import {
   setDoc,
 } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
-import { Button, Dimmer, Modal, Segment } from "semantic-ui-react";
+import { Button, Dimmer, Form, Icon, Modal, Segment } from "semantic-ui-react";
 import { dbService } from "../../firebaseConfig.js";
 import Timer from "../Timer.jsx";
 import { ep08BossListAtom } from "../../src/index";
 import { useRecoilState } from "recoil";
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Ep08_Ch2() {
   // 화면에 표시할 시간 설정
@@ -31,14 +31,26 @@ export default function Ep08_Ch2() {
   // 설정된 다음 시간을 받아오는 부분
   async function getNextApperanceTime() {
     try {
-      const docSnap1 = await getDoc(doc(dbService, "episode8_2ch", "episode8_1"));
-      const docSnap2 = await getDoc(doc(dbService, "episode8_2ch", "episode8_2"));
+      const docSnap1 = await getDoc(
+        doc(dbService, "episode8_2ch", "episode8_1")
+      );
+      const docSnap2 = await getDoc(
+        doc(dbService, "episode8_2ch", "episode8_2")
+      );
 
-      const docSnap3 = await getDoc(doc(dbService, "episode8_2ch", "episode8_3"));
-      const docSnap4 = await getDoc(doc(dbService, "episode8_2ch", "episode8_4"));
+      const docSnap3 = await getDoc(
+        doc(dbService, "episode8_2ch", "episode8_3")
+      );
+      const docSnap4 = await getDoc(
+        doc(dbService, "episode8_2ch", "episode8_4")
+      );
 
-      const docSnap5 = await getDoc(doc(dbService, "episode8_2ch", "episode8_5"));
-      const docSnap6 = await getDoc(doc(dbService, "episode8_2ch", "episode8_6"));
+      const docSnap5 = await getDoc(
+        doc(dbService, "episode8_2ch", "episode8_5")
+      );
+      const docSnap6 = await getDoc(
+        doc(dbService, "episode8_2ch", "episode8_6")
+      );
 
       const timeField1 = docSnap1.data();
       const timeField2 = docSnap2.data();
@@ -151,10 +163,13 @@ export default function Ep08_Ch2() {
   }, []);
 
   const EpContent = ({ id, areaName, bossName, time }) => {
-
     function notify() {
-      toast(`에피소드 8(채널 2)의 ${bossName}의 필드 이벤트가 5분 남았어요!`, { limit:1, autoClose:300000, pauseOnFocusLoss:false });
-  }
+      toast(`에피소드 8(채널 2)의 ${bossName}의 필드 이벤트가 5분 남았어요!`, {
+        limit: 1,
+        autoClose: 300000,
+        pauseOnFocusLoss: false,
+      });
+    }
 
     // 데이터베이스의 값 설정
     function setDBTime(newData, id) {
@@ -210,6 +225,37 @@ export default function Ep08_Ch2() {
                   nextMinute[id - 1]
                 }분`}</p>
               </div>
+              <Form>
+                <Form.Field>
+                  <div className="relative mb-4">
+                    <Icon name="mail" />
+                    <label className="leading-7 text-sm text-gray-600 mail">
+                      Hour
+                    </label>
+                    <input
+                      type="number"
+                      value={hour[id - 1]}
+                      onChange={changeHour}
+                      className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                    />
+                  </div>
+                </Form.Field>
+                <Form.Field>
+                  <div className="relative mb-4">
+                    <Icon name="user secret" />
+                    <label className="leading-7 text-sm text-gray-600">
+                      Minute
+                    </label>
+                    <input
+                      type="number"
+                      autoComplete="off"
+                      value={min[id - 1]}
+                      onChange={changeMin}
+                      className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                    />
+                  </div>
+                </Form.Field>
+              </Form>
               <button
                 className="inline-flex text-white bg-indigo-500 border-0 py-1 px-4 focus:outline-none hover:bg-indigo-600 rounded "
                 onClick={setNextApperanceTime}
@@ -237,7 +283,7 @@ export default function Ep08_Ch2() {
     <section className="text-gray-600 body-font">
       <div className="px-5 py-24 mx-auto text-center">
         <div className="flex flex-col text-center w-full mb-20">
-        <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">
+          <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">
             {`EP08(채널 2)`}
           </h1>
           <p className="lg:w-1/2 mx-auto leading-relaxed text-base">
