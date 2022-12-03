@@ -214,3 +214,8 @@ export const ep09BossListAtom= atom({
     }
   ]
 });
+
+export const userNameAtom= atom({
+  key: "userNameAtom", // unique ID
+  default: ""
+});

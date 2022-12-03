@@ -8,7 +8,6 @@ import Footer from '../Component/Footer'
 export default function App({ Component, pageProps }: AppProps) {
 
   return (
-
     <RecoilRoot>
       <Reset />
       <div className="container">

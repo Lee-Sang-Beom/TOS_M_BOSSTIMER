@@ -10,7 +10,7 @@ import React, { useEffect, useState } from "react";
 import { Form, Icon, Segment } from "semantic-ui-react";
 import { dbService } from "../../firebaseConfig.js";
 import Timer from "../Timer.jsx";
-import { ep04BossListAtom } from "../../src/index";
+import { ep04BossListAtom, userNameAtom } from "../../src/index";
 import { useRecoilState } from "recoil";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -19,6 +19,10 @@ export default function Ep04() {
   // 남은시간 설정을 위한 state 데이터
   const [hour, setHour] = useState([0, 0, 0, 0]);
   const [min, setMin] = useState([0, 0, 0, 0]);
+  
+  // userName
+  const [userName, setUserName]= useState([]);
+
   // 화면에 표시할 시간 설정
   const [nextYear, setNextYear] = useState([]);
   const [nextMonth, setNextMonth] = useState([]);
@@ -83,13 +87,19 @@ export default function Ep04() {
         timeField3.nextSecond,
         timeField4.nextSecond,
       ];
-
+      const currentUserName = [
+        timeField1.user,
+        timeField2.user,
+        timeField3.user,
+        timeField4.user,
+      ];
       setNextYear(nextYearList);
       setNextMonth(nextMonthList);
       setNextDay(nextDayList);
       setNextHour(nextHourList);
       setNextMinute(nextMinuteList);
       setNextSecond(nextSecondList);
+      setUserName(currentUserName);
     } catch (error) {
       alert(new Error(error));
     }
@@ -113,6 +123,7 @@ export default function Ep04() {
       const nextHourList = [];
       const nextMinuteList = [];
       const nextSecondList = [];
+      const userList = [];
 
       newData.map((data) => {
         nextYearList.push(data.nextYear);
@@ -121,6 +132,7 @@ export default function Ep04() {
         nextHourList.push(data.nextHour);
         nextMinuteList.push(data.nextMinute);
         nextSecondList.push(data.nextSecond);
+        userList.push(data.user);
       });
 
       setNextYear(nextYearList);
@@ -129,12 +141,14 @@ export default function Ep04() {
       setNextHour(nextHourList);
       setNextMinute(nextMinuteList);
       setNextSecond(nextSecondList);
+      setUserName(userList);
     });
   }, []);
 
   const EpContent = ({ id, areaName, bossName }) => {
     const [hourData, setHourData] = useState(0);
     const [minData, setMinData] = useState(0);
+    const [currentUserName, setCurrentUserName] = useRecoilState(userNameAtom);
 
     function notify() {
       toast(`에피소드 4의 ${bossName}의 필드 이벤트가 5분 남았어요!`, {
@@ -179,6 +193,8 @@ export default function Ep04() {
           nextHour: nextDBHour,
           nextMinute: nextDBMinute,
           nextSecond: nextDBSecond,
+          user: currentUserName
+
         },
         id
       );
@@ -213,6 +229,7 @@ export default function Ep04() {
           <div className="flex-grow">
             <h2 className="text-gray-900 mb-1 text-lg font-semibold">{`- ${areaName} -`}</h2>
             <p className="text-gray-900 mb-4 text-base">{`${bossName}`}</p>
+            <p className="text-gray-900 mb-4 text-sm">{`최종 수정인 : ${userName[id - 1]}`}</p>
             <div className="border border-gray-200 p-3 rounded-lg clock_relative">
               <div className="clock_icon_top">🧭</div>
               <div className="w-full p-4 flex flex-col items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-2">

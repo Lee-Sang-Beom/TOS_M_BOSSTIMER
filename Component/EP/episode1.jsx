@@ -10,7 +10,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { Form, Icon, Segment } from "semantic-ui-react";
 import { dbService } from "../../firebaseConfig.js";
 import Timer from "../Timer.jsx";
-import { ep01BossListAtom } from "../../src/index";
+import { ep01BossListAtom, userNameAtom } from "../../src/index";
 import { useRecoilState } from "recoil";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -20,6 +20,8 @@ export default function Ep01() {
   const [hour, setHour] = useState([0, 0]);
   const [min, setMin] = useState([0, 0]);
 
+  // userName
+  const [userName, setUserName]= useState([]);
 
   // 화면에 표시할 시간 설정
   const [nextYear, setNextYear] = useState([]);
@@ -28,6 +30,7 @@ export default function Ep01() {
   const [nextHour, setNextHour] = useState([]);
   const [nextMinute, setNextMinute] = useState([]);
   const [nextSecond, setNextSecond] = useState([]);
+
   const [bossData, setBossData] = useRecoilState(ep01BossListAtom);
 
   // episode1의 collection Name
@@ -48,6 +51,7 @@ export default function Ep01() {
       const nextHourList = [timeField1.nextHour, timeField2.nextHour];
       const nextMinuteList = [timeField1.nextMinute, timeField2.nextMinute];
       const nextSecondList = [timeField1.nextSecond, timeField2.nextSecond];
+      const currentUserName = [timeField1.user, timeField2.user];
 
       setNextYear(nextYearList);
       setNextMonth(nextMonthList);
@@ -55,6 +59,8 @@ export default function Ep01() {
       setNextHour(nextHourList);
       setNextMinute(nextMinuteList);
       setNextSecond(nextSecondList);
+      setUserName(currentUserName);
+
     } catch (error) {
       alert(new Error(error));
     }
@@ -78,6 +84,7 @@ export default function Ep01() {
       const nextHourList = [];
       const nextMinuteList = [];
       const nextSecondList = [];
+      const userList = [];
 
       newData.map((data) => {
         nextYearList.push(data.nextYear);
@@ -86,6 +93,7 @@ export default function Ep01() {
         nextHourList.push(data.nextHour);
         nextMinuteList.push(data.nextMinute);
         nextSecondList.push(data.nextSecond);
+        userList.push(data.user);
       });
 
       setNextYear(nextYearList);
@@ -94,6 +102,7 @@ export default function Ep01() {
       setNextHour(nextHourList);
       setNextMinute(nextMinuteList);
       setNextSecond(nextSecondList);
+      setUserName(userList);
     });
   }, []);
 
@@ -101,6 +110,7 @@ export default function Ep01() {
     
     const [hourData, setHourData] = useState(0);
     const [minData, setMinData] = useState(0);
+    const [currentUserName, setCurrentUserName] = useRecoilState(userNameAtom);
 
     function notify() {
       toast(`에피소드 1의 ${bossName}의 필드 이벤트가 5분 남았어요!`, {
@@ -145,6 +155,7 @@ export default function Ep01() {
           nextHour: nextDBHour,
           nextMinute: nextDBMinute,
           nextSecond: nextDBSecond,
+          user: currentUserName
         },
         id
       );
@@ -179,6 +190,7 @@ export default function Ep01() {
           <div className="flex-grow">
             <h2 className="text-gray-900 mb-1 text-lg font-semibold">{`- ${areaName} -`}</h2>
             <p className="text-gray-900 mb-4 text-base">{`${bossName}`}</p>
+            <p className="text-gray-900 mb-4 text-sm">{`최종 수정인 : ${userName[id - 1]}`}</p>
             <div className="border border-gray-200 p-3 rounded-lg clock_relative">
               <div className="clock_icon_top">🧭</div>
               <div className="w-full p-4 flex flex-col items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-2">
@@ -219,7 +231,7 @@ export default function Ep01() {
                   </div>
                 </Form.Field>
               </Form>
-
+              
               <button
                 className="inline-flex text-white bg-indigo-500 border-0 py-1 px-4 focus:outline-none hover:bg-indigo-600 rounded"
                 onClick={setNextApperanceTime}

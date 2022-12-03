@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react"
 import { ToastContainer } from "react-toastify"
 import Ep01 from "./EP/episode1"
 import Ep02 from "./EP/episode2"
@@ -12,8 +13,33 @@ import Ep08 from "./EP/episode8_1"
 import Ep08_2 from "./EP/episode8_2"
 import Ep09 from "./EP/episode9_1"
 import Ep09_2 from "./EP/episode9_2"
+import { authService as auth, dbService } from "../firebaseConfig"
+import { doc, getDoc } from "firebase/firestore"
+import { userNameAtom } from "../src/index";
+import { useRecoilState } from "recoil";
+import { useRouter } from "next/router"
 
 export default function EpisodeSection() {
+
+    const [userName, setUserName] = useRecoilState(userNameAtom);
+    const router = useRouter();
+
+    async function getUserName(id:string){
+        const userName = await getDoc(doc(dbService, "userInfo", id));
+        const returnName = userName.data()?.displayName ? userName.data()?.displayName : "guest";
+        return returnName;
+    }
+
+    useEffect(() => {
+        auth.onAuthStateChanged((user) => {
+            if (user) {
+                console.log(user.uid)
+                getUserName(user.uid).then((name)=>{setUserName(name)});
+            } else {
+                router.push("/");
+            }
+        });
+    }, []);
 
     return (
         <section className="text-gray-600 body-font">
