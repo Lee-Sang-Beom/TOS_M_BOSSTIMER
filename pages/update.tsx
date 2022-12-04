@@ -27,6 +27,18 @@ export default function Update() {
         <div className="px-5 py-24 mx-auto flex flex-wrap items-center justify-center">
           <div className="-my-8 divide-y-2 divide-gray-100">
 
+            {/* v1.3.1 업데이트 내용 */}
+            <UpdateSection version="UPDATE v1.3.1" date="2022-12-04">
+              <div>
+                <h2 className="text-xl font-medium text-gray-900 title-font mb-2">
+                {`에피소드 09 추가 및 필드 보스 시간 초기화 방법 변경`}
+                </h2>
+                <p className="leading-relaxed text-sm mb-1">
+                  - 최종 수정자의 닉네임이 각 보스별로 표시될 수 있도록 하는 기능을 추가하였습니다.
+                </p>
+              </div>
+            </UpdateSection>
+
             {/* v1.3.0 업데이트 내용 */}
             <UpdateSection version="UPDATE v1.3.0" date="2022-12-03">
               <div>

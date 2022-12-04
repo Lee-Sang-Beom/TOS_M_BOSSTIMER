@@ -190,7 +190,6 @@ export default function Ep01() {
           <div className="flex-grow">
             <h2 className="text-gray-900 mb-1 text-lg font-semibold">{`- ${areaName} -`}</h2>
             <p className="text-gray-900 mb-4 text-base">{`${bossName}`}</p>
-
             <p className="text-gray-900 mb-4 font-semibold text-base">
               <Icon name='user' />
               {userName[id - 1]}
