@@ -14,6 +14,8 @@ import { ep08BossListAtom, userNameAtom } from "../../src/index";
 import { useRecoilState } from "recoil";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Image from "next/image.js";
+import boss from "../../public/img/boss.jpg";
 
 export default function Ep08_Ch2() {
   // 남은시간 설정을 위한 state 데이터
@@ -332,7 +334,8 @@ export default function Ep08_Ch2() {
   return (
     <section className="text-gray-600 body-font">
       <div className="px-5 py-24 mx-auto text-center">
-        <div className="flex flex-col text-center w-full mb-20">
+      <div className="flex flex-col items-center text-center w-full mb-20">
+          <Image src={boss} alt="boss" width={120} height={12}/>
           <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">
             {`EP08(채널 2)`}
           </h1>

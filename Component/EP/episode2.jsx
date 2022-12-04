@@ -14,6 +14,8 @@ import { ep02BossListAtom, userNameAtom } from "../../src/index";
 import { useRecoilState } from "recoil";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Image from "next/image.js";
+import boss from "../../public/img/boss.jpg";
 
 export default function Ep02() {
   // 남은시간 설정을 위한 state 데이터
@@ -21,7 +23,7 @@ export default function Ep02() {
   const [min, setMin] = useState([0, 0, 0, 0, 0]);
 
   // userName
-  const [userName, setUserName]= useState([]);
+  const [userName, setUserName] = useState([]);
 
   // 화면에 표시할 시간 설정
   const [nextYear, setNextYear] = useState([]);
@@ -111,7 +113,6 @@ export default function Ep02() {
       setNextMinute(nextMinuteList);
       setNextSecond(nextSecondList);
       setUserName(currentUserName);
-
     } catch (error) {
       alert(new Error(error));
     }
@@ -205,7 +206,7 @@ export default function Ep02() {
           nextHour: nextDBHour,
           nextMinute: nextDBMinute,
           nextSecond: nextDBSecond,
-          user: currentUserName
+          user: currentUserName,
         },
         id
       );
@@ -240,7 +241,9 @@ export default function Ep02() {
           <div className="flex-grow">
             <h2 className="text-gray-900 mb-1 text-lg font-semibold">{`- ${areaName} -`}</h2>
             <p className="text-gray-900 mb-4 text-base">{`${bossName}`}</p>
-            <p className="text-gray-900 mb-4 text-sm">{`최종 수정인 : ${userName[id - 1]}`}</p>
+            <p className="text-gray-900 mb-4 text-sm">{`최종 수정인 : ${
+              userName[id - 1]
+            }`}</p>
             <div className="border border-gray-200 p-3 rounded-lg clock_relative">
               <div className="clock_icon_top">🧭</div>
               <div className="w-full p-4 flex flex-col items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-2">
@@ -306,7 +309,8 @@ export default function Ep02() {
   return (
     <section className="text-gray-600 body-font">
       <div className="px-5 py-24 mx-auto text-center">
-        <div className="flex flex-col text-center w-full mb-20">
+        <div className="flex flex-col items-center text-center w-full mb-20">
+          <Image src={boss} alt="boss" width={120} height={12} />
           <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">
             EP02
           </h1>
