@@ -230,9 +230,11 @@ export default function Ep04() {
           <div className="flex-grow">
             <h2 className="text-gray-900 mb-1 text-lg font-semibold">{`- ${areaName} -`}</h2>
             <p className="text-gray-900 mb-4 text-base">{`${bossName}`}</p>
-            <p className="text-gray-900 mb-4 text-sm">{`최종 수정인 : ${
-              userName[id - 1]
-            }`}</p>
+            <p className="text-gray-900 mb-4 font-semibold text-base">
+              <Icon name='user' />
+              {userName[id - 1]}
+            </p>
+            
             <div className="border border-gray-200 p-3 rounded-lg clock_relative">
               <div className="clock_icon_top">🧭</div>
               <div className="w-full p-4 flex flex-col items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-2">

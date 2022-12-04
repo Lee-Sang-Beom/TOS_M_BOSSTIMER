@@ -7,7 +7,7 @@ import {
   setDoc,
 } from "firebase/firestore";
 import React, { useEffect, useState, useRef } from "react";
-import { Form, Icon, Reveal, Segment } from "semantic-ui-react";
+import { Form, Icon, Label, Reveal, Segment } from "semantic-ui-react";
 import { dbService } from "../../firebaseConfig.js";
 import Timer from "../Timer.jsx";
 import { ep01BossListAtom, userNameAtom } from "../../src/index";
@@ -23,7 +23,7 @@ export default function Ep01() {
   const [min, setMin] = useState([0, 0]);
 
   // userName
-  const [userName, setUserName]= useState([]);
+  const [userName, setUserName] = useState([]);
 
   // 화면에 표시할 시간 설정
   const [nextYear, setNextYear] = useState([]);
@@ -62,7 +62,6 @@ export default function Ep01() {
       setNextMinute(nextMinuteList);
       setNextSecond(nextSecondList);
       setUserName(currentUserName);
-
     } catch (error) {
       alert(new Error(error));
     }
@@ -109,7 +108,6 @@ export default function Ep01() {
   }, []);
 
   const EpContent = ({ id, areaName, bossName }) => {
-    
     const [hourData, setHourData] = useState(0);
     const [minData, setMinData] = useState(0);
     const [currentUserName, setCurrentUserName] = useRecoilState(userNameAtom);
@@ -157,7 +155,7 @@ export default function Ep01() {
           nextHour: nextDBHour,
           nextMinute: nextDBMinute,
           nextSecond: nextDBSecond,
-          user: currentUserName
+          user: currentUserName,
         },
         id
       );
@@ -191,12 +189,13 @@ export default function Ep01() {
         <div className="h-full flex items-center border-gray-200 border p-4 rounded-lg">
           <div className="flex-grow">
             <h2 className="text-gray-900 mb-1 text-lg font-semibold">{`- ${areaName} -`}</h2>
-            <p className="text-gray-900 mb-4 text-base">
-            {`${bossName}`}
-            </p>
-            <p className="text-gray-900 mb-4 text-sm">{`최종 수정인 : ${userName[id - 1]}`}</p>
+            <p className="text-gray-900 mb-4 text-base">{`${bossName}`}</p>
 
-            
+            <p className="text-gray-900 mb-4 font-semibold text-base">
+              <Icon name='user' />
+              {userName[id - 1]}
+            </p>
+
             <div className="border border-gray-200 p-3 rounded-lg clock_relative">
               <div className="clock_icon_top">🧭</div>
               <div className="w-full p-4 flex flex-col items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-2">
@@ -207,7 +206,7 @@ export default function Ep01() {
                   nextMinute[id - 1]
                 }분`}</p>
               </div>
-              
+
               <Form>
                 <Form.Field>
                   <div className="relative mb-4">
@@ -217,7 +216,7 @@ export default function Ep01() {
                     <input
                       type="number"
                       value={hourData}
-                      onChange={(e)=>setHourData(e.target.value)}
+                      onChange={(e) => setHourData(e.target.value)}
                       className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                     />
                   </div>
@@ -231,13 +230,13 @@ export default function Ep01() {
                       type="number"
                       autoComplete="off"
                       value={minData}
-                      onChange={(e)=>setMinData(e.target.value)}
+                      onChange={(e) => setMinData(e.target.value)}
                       className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                     />
                   </div>
                 </Form.Field>
               </Form>
-              
+
               <button
                 className="inline-flex text-white bg-indigo-500 border-0 py-1 px-4 focus:outline-none hover:bg-indigo-600 rounded"
                 onClick={setNextApperanceTime}
@@ -265,7 +264,7 @@ export default function Ep01() {
     <section className="text-gray-600 body-font">
       <div className="px-5 py-24 mx-auto text-center">
         <div className="flex flex-col items-center text-center w-full mb-20">
-          <Image src={boss} alt="boss" width={120} height={12}/>
+          <Image src={boss} alt="boss" width={120} height={12} />
           <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">
             EP01
           </h1>

@@ -7,7 +7,6 @@
     height: 100vh;
 }
 
-
 /* 에피소드 별, 시계 아이콘 배치 위치를 결정하기 위해 사용 */
 .clock_relative {
     position: relative;
