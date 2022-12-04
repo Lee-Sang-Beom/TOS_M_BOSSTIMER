@@ -46,7 +46,7 @@ export default function EpisodeSection() {
     return (
         <section className="text-gray-600 body-font">
             <div className="px-5 py-24 mx-auto">
-                <div className = "text-red-600 font-bold flex justify-center">{`2022-12-03 최신 업데이트가 있습니다. 자세한 사항은 상단의 Update 버튼을 눌러 확인해보세요!`}</div>
+                <div className = "text-red-600 font-bold flex justify-center">{`2022-12-04 최신 업데이트가 있습니다. 자세한 사항은 상단의 Update 버튼을 눌러 확인해보세요!`}</div>
                 <ToastContainer />
                 <Ep01/>
                 <Ep02/>

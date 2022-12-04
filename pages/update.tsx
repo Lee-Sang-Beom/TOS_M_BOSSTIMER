@@ -31,7 +31,7 @@ export default function Update() {
             <UpdateSection version="UPDATE v1.3.1" date="2022-12-04">
               <div>
                 <h2 className="text-xl font-medium text-gray-900 title-font mb-2">
-                {`에피소드 09 추가 및 필드 보스 시간 초기화 방법 변경`}
+                {`사용자 닉네임 출력`}
                 </h2>
                 <p className="leading-relaxed text-sm mb-1">
                   - 최종 수정자의 닉네임이 각 보스별로 표시될 수 있도록 하는 기능을 추가하였습니다.
