@@ -18,14 +18,11 @@ export default function Navigation() {
             router.push("/admin");
         } else if (data.name === "update") {
             router.push("/update");
+        } else if (data.name === "logout") {
+            auth.signOut();
+            router.replace("/");
         }
     }  
-
-    // 로그아웃 버튼 클릭
-    const onLogOutClick = () => {
-      auth.signOut();
-      router.replace("/");
-    };
 
 
     return (
@@ -36,7 +33,7 @@ export default function Navigation() {
                 <Menu.Item className="hover:text-gray-900" name="update" active={activeItem === 'update'} onClick={goLink}/>
                 <div className="hidden md:block"><Menu.Item></Menu.Item></div>
                 <Menu.Menu position="right">
-                    <Menu.Item className="hover:text-gray-900" name="로그아웃" onClick={onLogOutClick} />
+                    <Menu.Item className="hover:text-gray-900" name="logout" active={activeItem === 'logout'} onClick={goLink} />
                 </Menu.Menu>
             </Menu>
         </nav>

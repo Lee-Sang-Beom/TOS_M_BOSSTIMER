@@ -2,20 +2,25 @@ import Navigation from "./Nav"
 import Image from "next/image"
 import logo from "../public/img/tosmLogo.jpg"
 import Link from "next/link"
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import { authService as auth } from "../firebaseConfig"
+import { useRecoilState } from "recoil"
+import { isSignedAtom } from "../src/index";
 
 export default function Header() {
-    const [isSignedIn, setIsSignedIn] = useState(false);
-
+    
+    const [isSignedIn, setIsSignedIn] = useRecoilState(isSignedAtom);
+    
     useEffect(() => {
-        auth.onAuthStateChanged((user) => {
-            if (user) {
-                setIsSignedIn(true);
-            } else {
-                setIsSignedIn(false);
-            }
-        });
+        if(!isSignedIn){
+            auth.onAuthStateChanged((user) => {
+                if (user) {
+                    setIsSignedIn(true);
+                } else {
+                    setIsSignedIn(false);
+                }
+            });
+        }
     }, []);
 
     return (

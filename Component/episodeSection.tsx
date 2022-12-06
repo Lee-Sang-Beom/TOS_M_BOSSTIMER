@@ -38,8 +38,8 @@ export default function EpisodeSection() {
                 // atom에 사용자 닉네임을 기록하고, 에피소드 컴포넌트 어디에서나 참조할 수 있도록 함
                 getUserName(user.uid).then((name)=>{setUserName(name)});
             } else {
-                // 만약 사용자의 로그인 상태가 아니라고 판단된 경우, 로그인화면으로
-                router.push("/");
+                // 만약 사용자의 로그인 상태가 아니라고 판단된 경우, 로그인 화면으로
+                router.push("/", undefined, {shallow: true});
             }
         });
     }, []);

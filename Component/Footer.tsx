@@ -3,20 +3,11 @@ import Link from "next/link"
 import { useEffect, useState } from "react";
 import { authService as auth } from "../firebaseConfig";
 import logo from "../public/img/tosmLogo.jpg"
-
+import { useRecoilState } from "recoil"
+import { isSignedAtom } from "../src/index";
 export default function Footer() {
 
-    const [isSignedIn, setIsSignedIn] = useState(false);
-
-    useEffect(() => {
-        auth.onAuthStateChanged((user) => {
-            if (user) {
-                setIsSignedIn(true);
-            } else {
-                setIsSignedIn(false);
-            }
-        });
-    }, []);
+    const [isSignedIn, setIsSignedIn] = useRecoilState(isSignedAtom);
 
     return (
         <>

@@ -219,3 +219,8 @@ export const userNameAtom= atom({
   key: "userNameAtom", // unique ID
   default: ""
 });
+
+export const isSignedAtom = atom({
+  key: "isSignedAtom", // unique ID
+  default: false,
+})
