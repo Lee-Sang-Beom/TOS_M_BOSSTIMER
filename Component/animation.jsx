@@ -3,6 +3,7 @@ import React from 'react'
 import Lottie from 'react-lottie-player'
 import lottieJson from '../public/animation.json'
 
+// lottie animation 출력을 위한 component
 export default function Aniamtion() {
   return (
     <Lottie

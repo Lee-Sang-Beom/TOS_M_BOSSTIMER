@@ -112,6 +112,7 @@ export default function Ep01() {
     const [minData, setMinData] = useState(0);
     const [currentUserName, setCurrentUserName] = useRecoilState(userNameAtom);
 
+    // react-toastify lib : 알림 출력
     function notify() {
       toast(`에피소드 1의 ${bossName}의 필드 이벤트가 5분 남았어요!`, {
         limit: 1,
@@ -161,6 +162,7 @@ export default function Ep01() {
       );
     }
 
+    // 남은 시간, 분을 계산
     function changeHour() {
       const newState = hour.map((item, idx) => {
         if (idx === id - 1) {
@@ -189,7 +191,7 @@ export default function Ep01() {
         <div className="h-full flex items-center border-gray-200 border p-4 rounded-lg">
           <div className="flex-grow">
             <h2 className="text-gray-900 mb-1 text-lg font-semibold">{`- ${areaName} -`}</h2>
-            <p className="text-gray-900 mb-4 text-base">{`${bossName}`}</p>
+            <p className="text-gray-900 py-1 mb-4 text-base bg-slate-800 text-white font-semibold rounded-lg">{`${bossName}`}</p>
             <p className="text-gray-900 mb-4 font-semibold text-base">
               <Icon name='user' />
               {userName[id - 1]}

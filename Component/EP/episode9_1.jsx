@@ -238,7 +238,7 @@ export default function Ep09_Ch1() {
         <div className="h-full flex items-center border-gray-200 border p-4 rounded-lg">
           <div className="flex-grow">
             <h2 className="text-gray-900 mb-1 text-lg font-semibold">{`- ${areaName} -`}</h2>
-            <p className="text-gray-900 mb-4 text-base">{`${bossName}`}</p>
+            <p className="text-gray-900 py-1 mb-4 text-base bg-slate-800 text-white font-semibold rounded-lg">{`${bossName}`}</p>
             <p className="text-gray-900 mb-4 font-semibold text-base">
               <Icon name='user' />
               {userName[id - 1]}

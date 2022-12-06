@@ -21,6 +21,7 @@ import { useRouter } from "next/router"
 
 export default function EpisodeSection() {
 
+    // atom: userName
     const [userName, setUserName] = useRecoilState(userNameAtom);
     const router = useRouter();
 
