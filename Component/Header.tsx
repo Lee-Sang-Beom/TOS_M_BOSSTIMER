@@ -8,7 +8,8 @@ import { useRecoilState } from "recoil"
 import { isSignedAtom } from "../src/index";
 
 export default function Header() {
-    
+
+    // 로그인 여부를 확인하여, 컴포넌트 출력 여부 결정
     const [isSignedIn, setIsSignedIn] = useRecoilState(isSignedAtom);
     
     useEffect(() => {

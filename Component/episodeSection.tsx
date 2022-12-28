@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import { ToastContainer } from "react-toastify"
 import Ep01 from "./EP/episode1"
 import Ep02 from "./EP/episode2"

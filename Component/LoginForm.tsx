@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction } from "react";
-import { Form, Label, Input, Button, Icon } from "semantic-ui-react";
+import { Form, Icon } from "semantic-ui-react";
 import 'semantic-ui-css/semantic.min.css';
 
 interface Props {

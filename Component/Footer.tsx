@@ -1,13 +1,27 @@
 import Image from "next/image"
 import Link from "next/link"
-import { useEffect, useState } from "react";
-import { authService as auth } from "../firebaseConfig";
 import logo from "../public/img/tosmLogo.jpg"
 import { useRecoilState } from "recoil"
 import { isSignedAtom } from "../src/index";
+import { useEffect } from "react"
+import { authService as auth } from "../firebaseConfig"
+
 export default function Footer() {
 
+    // 로그인 여부를 확인하여, 컴포넌트 출력 여부 결정
     const [isSignedIn, setIsSignedIn] = useRecoilState(isSignedAtom);
+
+    useEffect(() => {
+        if(!isSignedIn){
+            auth.onAuthStateChanged((user) => {
+                if (user) {
+                    setIsSignedIn(true);
+                } else {
+                    setIsSignedIn(false);
+                }
+            });
+        }
+    }, []);
 
     return (
         <>

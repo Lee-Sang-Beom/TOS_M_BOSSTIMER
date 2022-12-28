@@ -2,6 +2,7 @@ import LoginTemplate from "./LoginTemplate"
 import Animation from "./animation.jsx";
 import 'animate.css';
 
+// 로그인 화면의 전체 템플릿
 export default function Sign() {
     return (
         <div>
