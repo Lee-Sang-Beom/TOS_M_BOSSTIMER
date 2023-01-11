@@ -27,6 +27,18 @@ export default function Update() {
         <div className="px-5 py-24 mx-auto flex flex-wrap items-center justify-center">
           <div className="-my-8 divide-y-2 divide-gray-100">
 
+            {/* v1.3.2 업데이트 내용 */}
+            <UpdateSection version="UPDATE v1.3.2" date="2023-01-11">
+              <div>
+                <h2 className="text-xl font-medium text-gray-900 title-font mb-2">
+                {`서버 통합 및 업데이트에 의한 타이머 관리 채널 증축`}
+                </h2>
+                <p className="leading-relaxed text-sm mb-1">
+                 {`- 서버 통합으로 인해 증축이 필요한 채널에 대한 타이머 영역과, 심연의 람스티스 협곡(1,2 채널)에 대한 타이머 영역을 추가하였습니다. `}
+                </p>
+              </div>
+            </UpdateSection>
+
             {/* v1.3.1 업데이트 내용 */}
             <UpdateSection version="UPDATE v1.3.1" date="2022-12-04">
               <div>

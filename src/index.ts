@@ -215,6 +215,34 @@ export const ep09BossListAtom= atom({
   ]
 });
 
+export const epEtcBossListAtom= atom({
+  key: "epEtcBossListAtom", // unique ID
+  default: [
+    {
+      id : 1,
+      area: '마법사의 탑 3층',
+      bossName: '분노한 헬가 세르클 (4채널)',
+    },{
+      id : 2,
+      area: '마법사의 탑 3층',
+      bossName: '분노한 헬가 세르클 (5채널)',
+    },{
+      id : 3,
+      area: '마법사의 탑 3층',
+      bossName: '분노한 헬가 세르클 (6채널)',
+    },{
+      id : 4,
+      area: '심연의 람스티스 협곡',
+      bossName: '??? (1채널)',
+    },{
+      id : 5,
+      area: '심연의 람스티스 협곡',
+      bossName: '??? (2채널)',
+    }
+  ]
+});
+
+
 export const userNameAtom= atom({
   key: "userNameAtom", // unique ID
   default: ""
