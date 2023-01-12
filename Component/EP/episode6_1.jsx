@@ -162,7 +162,7 @@ export default function Ep06_Ch1() {
     const [currentUserName, setCurrentUserName] = useRecoilState(userNameAtom);
 
     function notify() {
-      toast(`에피소드 6(채널 1)의 ${bossName}의 필드 이벤트가 5분 남았어요!`, {
+      toast(`에피소드 6의 ${bossName}의 필드 이벤트가 5분 남았어요!`, {
         limit: 1,
         autoClose: 300000,
         pauseOnFocusLoss: false,
@@ -310,8 +310,8 @@ export default function Ep06_Ch1() {
       <div className="px-5 py-24 mx-auto text-center">
         <div className="flex flex-col items-center text-center w-full mb-20">
           <Image src={boss} alt="boss" width={120} height={12} />
-          <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">{`EP06(채널 1)`}</h1>
-          <p className="lg:w-1/3 mx-auto leading-relaxed text-base">{`에피소드6 (채널 1)의 필드보스 타이머입니다.`}</p>
+          <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">{`EP06`}</h1>
+          <p className="lg:w-1/3 mx-auto leading-relaxed text-base">{`에피소드 6의 필드보스 타이머입니다.`}</p>
         </div>
         <Segment>
           <div className="flex flex-wrap -m-2">

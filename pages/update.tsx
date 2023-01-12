@@ -27,6 +27,18 @@ export default function Update() {
         <div className="px-5 py-24 mx-auto flex flex-wrap items-center justify-center">
           <div className="-my-8 divide-y-2 divide-gray-100">
 
+            {/* v1.3.3 업데이트 내용 */}
+            <UpdateSection version="UPDATE v1.3.3" date="2023-01-12">
+              <div>
+                <h2 className="text-xl font-medium text-gray-900 title-font mb-2">
+                {`불필요한 타이머 관리 영역 삭제`}
+                </h2>
+                <p className="leading-relaxed text-sm mb-1">
+                 {`- 에피소드 6과 7의 채널 2에 대한 타이머 관리 영역을 삭제하였습니다.`}
+                </p>
+              </div>
+            </UpdateSection>
+
             {/* v1.3.2 업데이트 내용 */}
             <UpdateSection version="UPDATE v1.3.2" date="2023-01-11">
               <div>
