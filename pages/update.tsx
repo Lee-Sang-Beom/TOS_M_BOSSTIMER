@@ -27,14 +27,33 @@ export default function Update() {
         <div className="px-5 py-24 mx-auto flex flex-wrap items-center justify-center">
           <div className="-my-8 divide-y-2 divide-gray-100">
 
+            {/* v1.4.0 업데이트 내용 */}
+            <UpdateSection version="UPDATE v1.4.0" date="2023-01-23">
+              <div>
+                <h2 className="text-xl font-medium text-gray-900 title-font mb-2">
+                  {`에피소드 10 추가 및 불필요한 타이머 관리 영역 삭제, 수정`}
+                </h2>
+                <p className="leading-relaxed text-sm mb-1">
+                  - 대형 업데이트에 따라, 이제 <span className="font-bold">{`에피소드 10 3개 채널(1,2)`}</span>
+                  에 대한 필드 보스의 리젠 시간을 확인할 수 있습니다.
+                </p>
+                <p className="leading-relaxed text-sm mb-1">
+                  - 더이상 사용되지 않는 것으로 파악되는 에피소드 9 2개 채널(2,3)에 대한 조작 영역을 삭제하였습니다.
+                </p>
+                <p className="leading-relaxed text-sm mb-1">
+                  - 기타 항목으로 분류된 타이머 영역의 대상이 수정되었습니다.
+                </p>
+              </div>
+            </UpdateSection>
+
             {/* v1.3.3 업데이트 내용 */}
             <UpdateSection version="UPDATE v1.3.3" date="2023-01-12">
               <div>
                 <h2 className="text-xl font-medium text-gray-900 title-font mb-2">
-                {`불필요한 타이머 관리 영역 삭제`}
+                  {`불필요한 타이머 관리 영역 삭제`}
                 </h2>
                 <p className="leading-relaxed text-sm mb-1">
-                 {`- 에피소드 6과 7의 채널 2에 대한 타이머 관리 영역을 삭제하였습니다.`}
+                  {`- 에피소드 6과 7의 채널 2에 대한 타이머 관리 영역을 삭제하였습니다.`}
                 </p>
               </div>
             </UpdateSection>
@@ -43,10 +62,10 @@ export default function Update() {
             <UpdateSection version="UPDATE v1.3.2" date="2023-01-11">
               <div>
                 <h2 className="text-xl font-medium text-gray-900 title-font mb-2">
-                {`서버 통합 및 업데이트에 의한 타이머 관리 채널 증축`}
+                  {`서버 통합 및 업데이트에 의한 타이머 관리 채널 증축`}
                 </h2>
                 <p className="leading-relaxed text-sm mb-1">
-                 {`- 서버 통합으로 인해 증축이 필요한 채널에 대한 타이머 영역과, 심연의 람스티스 협곡(1,2 채널)에 대한 타이머 영역을 추가하였습니다. `}
+                  {`- 서버 통합으로 인해 증축이 필요한 채널에 대한 타이머 영역과, 심연의 람스티스 협곡(1,2 채널)에 대한 타이머 영역을 추가하였습니다. `}
                 </p>
               </div>
             </UpdateSection>
@@ -55,7 +74,7 @@ export default function Update() {
             <UpdateSection version="UPDATE v1.3.1" date="2022-12-04">
               <div>
                 <h2 className="text-xl font-medium text-gray-900 title-font mb-2">
-                {`사용자 닉네임 출력`}
+                  {`사용자 닉네임 출력`}
                 </h2>
                 <p className="leading-relaxed text-sm mb-1">
                   - 최종 수정자의 닉네임이 각 보스별로 표시될 수 있도록 하는 기능을 추가하였습니다.
@@ -67,7 +86,7 @@ export default function Update() {
             <UpdateSection version="UPDATE v1.3.0" date="2022-12-03">
               <div>
                 <h2 className="text-xl font-medium text-gray-900 title-font mb-2">
-                {`에피소드 09 추가 및 필드 보스 시간 초기화 방법 변경`}
+                  {`에피소드 09 추가 및 필드 보스 시간 초기화 방법 변경`}
                 </h2>
                 <p className="leading-relaxed text-sm mb-1">
                   - 대형 업데이트에 따라, 이제 <span className="font-bold">{`에피소드 09 2개 채널(1,2)`}</span>
