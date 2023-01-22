@@ -215,29 +215,52 @@ export const ep09BossListAtom= atom({
   ]
 });
 
+export const ep10BossListAtom= atom({
+  key: "ep10BossListAtom", // unique ID
+  default: [
+    {
+      id : 1,
+      area: '대성당 참회로',
+      bossName: '비겁한 글락쿠만',
+    },{
+      id : 2,
+      area: '대성당 본당',
+      bossName: '강인한 파이어로드',
+    },{
+      id : 3,
+      area: '대성당 대회랑',
+      bossName: '강인한 리테리스',
+    },{
+      id : 4,
+      area: '대성당 지성소',
+      bossName: '분노한 나크티스',
+    }
+  ]
+});
+
 export const epEtcBossListAtom= atom({
   key: "epEtcBossListAtom", // unique ID
   default: [
     {
       id : 1,
-      area: '마법사의 탑 3층',
-      bossName: '분노한 헬가 세르클 (4채널)',
+      area: '대성당 참회로',
+      bossName: '비겁한 글락쿠만 (4채널)',
     },{
       id : 2,
-      area: '마법사의 탑 3층',
-      bossName: '분노한 헬가 세르클 (5채널)',
+      area: '대성당 지성소',
+      bossName: '분노한 나크티스 (4채널)',
     },{
       id : 3,
-      area: '마법사의 탑 3층',
-      bossName: '분노한 헬가 세르클 (6채널)',
+      area: '대성당 지성소',
+      bossName: '분노한 나크티스 (5채널)',
     },{
       id : 4,
-      area: '심연의 람스티스 협곡',
-      bossName: '??? (1채널)',
+      area: '대성당 지성소',
+      bossName: '분노한 나크티스 (6채널)',
     },{
       id : 5,
       area: '심연의 람스티스 협곡',
-      bossName: '??? (2채널)',
+      bossName: '???',
     }
   ]
 });

@@ -10,14 +10,14 @@ import React, { useEffect, useState } from "react";
 import { Form, Icon, Segment } from "semantic-ui-react";
 import { dbService } from "../../firebaseConfig.js";
 import Timer from "../Timer.jsx";
-import { ep09BossListAtom, userNameAtom } from "../../src/index";
+import { ep10BossListAtom, userNameAtom } from "../../src/index";
 import { useRecoilState } from "recoil";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Image from "next/image.js";
 import boss from "../../public/img/boss.jpg";
 
-export default function Ep09_Ch3() {
+export default function Ep10_Ch3() {
   // 남은시간 설정을 위한 state 데이터
   const [hour, setHour] = useState([0, 0, 0, 0, 0]);
   const [min, setMin] = useState([0, 0, 0, 0, 0]);
@@ -32,35 +32,23 @@ export default function Ep09_Ch3() {
   const [nextHour, setNextHour] = useState([]);
   const [nextMinute, setNextMinute] = useState([]);
   const [nextSecond, setNextSecond] = useState([]);
-  const [bossData, setBossData] = useRecoilState(ep09BossListAtom);
+  const [bossData, setBossData] = useRecoilState(ep10BossListAtom);
 
   // episode6_ch1의 collection Name
-  const q = query(collection(dbService, "episode9_3ch"));
+  const q = query(collection(dbService, "episode10_3ch"));
 
   // 설정된 다음 시간을 받아오는 부분
   async function getNextApperanceTime() {
     try {
-      const docSnap1 = await getDoc(
-        doc(dbService, "episode9_3ch", "episode9_1")
-      );
-      const docSnap2 = await getDoc(
-        doc(dbService, "episode9_3ch", "episode9_2")
-      );
-      const docSnap3 = await getDoc(
-        doc(dbService, "episode9_3ch", "episode9_3")
-      );
-      const docSnap4 = await getDoc(
-        doc(dbService, "episode9_3ch", "episode9_4")
-      );
-      const docSnap5 = await getDoc(
-        doc(dbService, "episode9_3ch", "episode9_5")
-      );
+      const docSnap1 = await getDoc(doc(dbService, "episode10_3ch", "episode10_1"));
+      const docSnap2 = await getDoc(doc(dbService, "episode10_3ch", "episode10_2"));
+      const docSnap3 = await getDoc(doc(dbService, "episode10_3ch", "episode10_3"));
+      const docSnap4 = await getDoc(doc(dbService, "episode10_3ch", "episode10_4"));
 
       const timeField1 = docSnap1.data();
       const timeField2 = docSnap2.data();
       const timeField3 = docSnap3.data();
       const timeField4 = docSnap4.data();
-      const timeField5 = docSnap5.data();
 
       // 차후 push 사용으로 코드 간소화
       const nextYearList = [
@@ -68,7 +56,6 @@ export default function Ep09_Ch3() {
         timeField2.nextYear,
         timeField3.nextYear,
         timeField4.nextYear,
-        timeField5.nextYear,
       ];
 
       const nextMonthList = [
@@ -76,7 +63,6 @@ export default function Ep09_Ch3() {
         timeField2.nextMonth,
         timeField3.nextMonth,
         timeField4.nextMonth,
-        timeField5.nextMonth,
       ];
 
       const nextDayList = [
@@ -84,35 +70,30 @@ export default function Ep09_Ch3() {
         timeField2.nextDay,
         timeField3.nextDay,
         timeField4.nextDay,
-        timeField5.nextDay,
       ];
       const nextHourList = [
         timeField1.nextHour,
         timeField2.nextHour,
         timeField3.nextHour,
         timeField4.nextHour,
-        timeField5.nextHour,
       ];
       const nextMinuteList = [
         timeField1.nextMinute,
         timeField2.nextMinute,
         timeField3.nextMinute,
         timeField4.nextMinute,
-        timeField5.nextMinute,
       ];
       const nextSecondList = [
         timeField1.nextSecond,
         timeField2.nextSecond,
         timeField3.nextSecond,
         timeField4.nextSecond,
-        timeField5.nextSecond,
       ];
       const currentUserName = [
         timeField1.user,
         timeField2.user,
         timeField3.user,
         timeField4.user,
-        timeField5.user,
       ];
       setNextYear(nextYearList);
       setNextMonth(nextMonthList);
@@ -172,7 +153,7 @@ export default function Ep09_Ch3() {
     const [currentUserName, setCurrentUserName] = useRecoilState(userNameAtom);
 
     function notify() {
-      toast(`에피소드 9(채널 3)의 ${bossName}의 필드 이벤트가 5분 남았어요!`, {
+      toast(`에피소드 10(채널 3)의 ${bossName}의 필드 이벤트가 5분 남았어요!`, {
         limit: 1,
         autoClose: 300000,
         pauseOnFocusLoss: false,
@@ -181,7 +162,7 @@ export default function Ep09_Ch3() {
 
     // 데이터베이스의 값 설정
     function setDBTime(newData, id) {
-      return setDoc(doc(dbService, `episode9_3ch`, `episode9_${id}`), newData, {
+      return setDoc(doc(dbService, `episode10_3ch`, `episode10_${id}`), newData, {
         merge: true,
       });
     }
@@ -320,8 +301,8 @@ export default function Ep09_Ch3() {
       <div className="px-5 py-24 mx-auto text-center">
         <div className="flex flex-col items-center text-center w-full mb-20">
           <Image src={boss} alt="boss" width={120} height={12} />
-          <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">{`EP09(채널 3)`}</h1>
-          <p className="lg:w-1/3 mx-auto leading-relaxed text-base">{`에피소드9 (채널 3)의 필드보스 타이머입니다.`}</p>
+          <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">{`EP10(채널 3)`}</h1>
+          <p className="lg:w-1/3 mx-auto leading-relaxed text-base">{`에피소드10 (채널 3)의 필드보스 타이머입니다.`}</p>
         </div>
         <Segment>
           <div className="flex flex-wrap -m-2">

@@ -10,8 +10,9 @@ import Ep07 from "./EP/episode7_1";
 import Ep08 from "./EP/episode8_1";
 import Ep08_2 from "./EP/episode8_2";
 import Ep09 from "./EP/episode9_1";
-import Ep09_2 from "./EP/episode9_2";
-import Ep09_3 from "./EP/episode9_3";
+import Ep10 from "./EP/episode10_1";
+import Ep10_2 from "./EP/episode10_2";
+import Ep10_3 from "./EP/episode10_3";
 import Ep_etc from "./EP/episode_etc";
 import { authService as auth, dbService } from "../firebaseConfig";
 import { doc, getDoc } from "firebase/firestore";
@@ -48,7 +49,7 @@ export default function EpisodeSection() {
         <section className="text-gray-600 body-font">
             <div className="px-5 py-24 mx-auto">
                 <div className = "text-red-600 font-bold flex justify-center">
-                    {`2023-01-12 최신 업데이트가 있습니다. 자세한 사항은 상단의 Update 버튼을 눌러 확인해보세요!`}
+                    {`2023-01-23 최신 업데이트가 있습니다. 자세한 사항은 상단의 Update 버튼을 눌러 확인해보세요!`}
                 </div>
                 <ToastContainer />
                 <Ep01/>
@@ -61,8 +62,9 @@ export default function EpisodeSection() {
                 <Ep08/>
                 <Ep08_2/>
                 <Ep09/>
-                <Ep09_2/>
-                <Ep09_3/>
+                <Ep10/>
+                <Ep10_2/>
+                <Ep10_3/>
                 <Ep_etc/>
             </div>
         </section>
